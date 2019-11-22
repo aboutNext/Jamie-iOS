@@ -1,18 +1,14 @@
 //
-//  ListTableViewCell.swift
-//  About
+//  SettingTableViewCell.swift
+//  Jamie
 //
-//  Created by yunseo on 11/20/19.
-//  Copyright © 2019 aboutNext. All rights reserved.
+//  Created by apple on 2019/11/21.
+//  Copyright © 2019 yunseo. All rights reserved.
 //
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var dateImageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+class SettingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,14 +16,13 @@ class ListTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
 }
-
