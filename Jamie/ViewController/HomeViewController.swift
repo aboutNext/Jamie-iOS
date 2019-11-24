@@ -37,9 +37,9 @@ class HomeViewController: UIViewController {
     
     //BottomTapView
     @IBOutlet weak var bottomMenuView: UIView!
-    @IBOutlet weak var homeTapButton: UIButton!
-    @IBOutlet weak var listTapButton: UIButton!
-    @IBOutlet weak var settingTapButton: UIButton!
+//    @IBOutlet weak var homeTapButton: UIButton!
+//    @IBOutlet weak var listTapButton: UIButton!
+//    @IBOutlet weak var settingTapButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,30 +59,30 @@ class HomeViewController: UIViewController {
         tap.delegate = self as? UIGestureRecognizerDelegate
         view.addGestureRecognizer(tap)
         
-        homeTapButton.addTarget(self, action: #selector(bottomMenuTouched(_:)), for: .touchUpInside)
-        listTapButton.addTarget(self, action: #selector(bottomMenuTouched(_:)), for: .touchUpInside)
-        settingTapButton.addTarget(self, action: #selector(bottomMenuTouched(_:)), for: .touchUpInside)
+//        homeTapButton.addTarget(self, action: #selector(bottomMenuTouched(_:)), for: .touchUpInside)
+//        listTapButton.addTarget(self, action: #selector(bottomMenuTouched(_:)), for: .touchUpInside)
+//        settingTapButton.addTarget(self, action: #selector(bottomMenuTouched(_:)), for: .touchUpInside)
         
     
         doButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
     }
  
-    @objc private func bottomMenuTouched(_ sender: UIButton) {
-        print(sender)
-        
-        let type = sender.tag
-        switch MainTab(rawValue: type) {
-        case .home:
-            break
-        case .list:
-            let vc = ListViewController.init()
-        case .setting:
-            break
-        case .none:
-            break
-        }
-    }
+//    @objc private func bottomMenuTouched(_ sender: UIButton) {
+//        print(sender)
+//        
+//        let type = sender.tag
+//        switch MainTab(rawValue: type) {
+//        case .home:
+//            break
+//        case .list:
+//            let vc = ListViewController.init()
+//        case .setting:
+//            break
+//        case .none:
+//            break
+//        }
+//    }
     
     private func showEvaluableView(isEvaluabled : Bool) {
         if isEvaluabled {
