@@ -45,9 +45,6 @@ class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
-        evaluableView.isHidden = true
-        memoView.isHidden = true
-        
 //        highlightTextView.becomeFirstResponder()
         highlightTextView.delegate = self
         memoTextView.delegate = self
@@ -72,9 +69,6 @@ class HomeViewController: UIViewController {
 
     
     @objc func evaluableButtonTouched(_ sender: UIButton) {
-           //버튼 선택하면 일단 메모 노출 한다.
-           memoView.isHidden = false
-           
            if sender === doButton {
                doImageView.isHidden = false
                undoImageView.isHidden = true
@@ -99,9 +93,7 @@ class HomeViewController: UIViewController {
         writeVC.modalPresentationStyle = .overCurrentContext
         present(writeVC, animated: true, completion: nil)
         
-        
-//          myModalViewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-//          myModalViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical        
+     
     }
 }
 
@@ -120,8 +112,6 @@ extension HomeViewController: UITextViewDelegate {
         }
         
         if textView == memoTextView {
-            memoView.isHidden = false
-            
             let height = textView.frame.size.height + evaluableView.frame.size.height
             let offset = CGPoint(x:0, y:height)
             scrollView.setContentOffset(offset, animated: true)
@@ -133,7 +123,6 @@ extension HomeViewController: UITextViewDelegate {
         print("끝")
 
         if textView == highlightTextView {
-            evaluableView.isHidden = false
             showEvaluableView(isEvaluabled: true)
         }
         
