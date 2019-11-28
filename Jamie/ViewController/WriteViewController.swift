@@ -10,21 +10,28 @@ import UIKit
 
 class WriteViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var dismissButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
+    }
+    
+    
+    private func setupUI() {
+        //text view
+        textView.textContainerInset = UIEdgeInsets(top: 00, left: 20, bottom: 0, right: 20)
+        textView.textContainer.lineBreakMode = .byCharWrapping
+        textView.textColor = UIColor.black
+        
+        
+        dismissButton.addTarget(self, action: #selector(touchUpDismissView), for: .touchUpInside)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc func touchUpDismissView(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
 }

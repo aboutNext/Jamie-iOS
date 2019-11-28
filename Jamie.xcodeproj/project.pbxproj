@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180EC319238D2A5F00C97221 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EC318238D2A5F00C97221 /* CustomNavigationView.swift */; };
+		180EC31B238D2A6A00C97221 /* CustomNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EC31A238D2A6A00C97221 /* CustomNavigationView.xib */; };
 		1871DC3323862D2D00757B60 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1871DC3123862D2D00757B60 /* SettingTableViewCell.xib */; };
 		1871DC3423862D2D00757B60 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871DC3223862D2D00757B60 /* SettingTableViewCell.swift */; };
 		1887587C23850BE400C8F7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887587B23850BE400C8F7EC /* AppDelegate.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180EC318238D2A5F00C97221 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		180EC31A238D2A6A00C97221 /* CustomNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomNavigationView.xib; sourceTree = "<group>"; };
 		1871DC3123862D2D00757B60 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		1871DC3223862D2D00757B60 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		1887587823850BE400C8F7EC /* Jamie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jamie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +98,8 @@
 				18DA5D08238623EA007DB93E /* ListTableViewCell.xib */,
 				1871DC3223862D2D00757B60 /* SettingTableViewCell.swift */,
 				1871DC3123862D2D00757B60 /* SettingTableViewCell.xib */,
+				180EC318238D2A5F00C97221 /* CustomNavigationView.swift */,
+				180EC31A238D2A6A00C97221 /* CustomNavigationView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 				1887588823850BE400C8F7EC /* LaunchScreen.storyboard in Resources */,
 				18DA5D09238623EA007DB93E /* ListTableViewCell.xib in Resources */,
 				1871DC3323862D2D00757B60 /* SettingTableViewCell.xib in Resources */,
+				180EC31B238D2A6A00C97221 /* CustomNavigationView.xib in Resources */,
 				1887588523850BE400C8F7EC /* Assets.xcassets in Resources */,
 				1887588323850BE400C8F7EC /* Main.storyboard in Resources */,
 			);
@@ -207,6 +214,7 @@
 				18DA5D0F23862401007DB93E /* Highlight.swift in Sources */,
 				1887587E23850BE400C8F7EC /* SceneDelegate.swift in Sources */,
 				18DA5D0D238623FA007DB93E /* ListViewController.swift in Sources */,
+				180EC319238D2A5F00C97221 /* CustomNavigationView.swift in Sources */,
 				CE4BC65E238A69C700151056 /* WriteViewController.swift in Sources */,
 				188758902385100D00C8F7EC /* HomeViewController.swift in Sources */,
 			);
