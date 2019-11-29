@@ -33,7 +33,7 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highlight-memo-bg" translatesAutoresizingMaskIntoConstraints="NO" id="zRs-1P-SaD">
                                                         <rect key="frame" x="10" y="17" width="355" height="211"/>
                                                     </imageView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="asdfasdf" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="631-m8-IKN">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="631-m8-IKN">
                                                         <rect key="frame" x="25" y="87" width="325" height="128"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="128" id="sj7-Pl-nhb"/>
@@ -41,6 +41,9 @@
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="R1s-7l-Pie" id="ps5-IO-TrG"/>
+                                                        </connections>
                                                     </textView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highlight-memo-tape" translatesAutoresizingMaskIntoConstraints="NO" id="4TY-dy-xA1">
                                                         <rect key="frame" x="127" y="0.0" width="121" height="41"/>
@@ -84,7 +87,7 @@
                                                             <constraint firstAttribute="width" constant="89" id="Xdw-BR-fcO"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character-done" translatesAutoresizingMaskIntoConstraints="NO" id="sRT-H9-oxW">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="character-waiting" translatesAutoresizingMaskIntoConstraints="NO" id="sRT-H9-oxW">
                                                         <rect key="frame" x="151.5" y="11.5" width="72" height="77"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="77" id="7TJ-2n-XFd"/>
@@ -148,7 +151,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNh-m0-wzh" userLabel="MemoView">
-                                                <rect key="frame" x="0.0" y="370" width="375" height="250"/>
+                                                <rect key="frame" x="0.0" y="369" width="375" height="250"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highlight-memo-bg" translatesAutoresizingMaskIntoConstraints="NO" id="mGX-FH-we5">
                                                         <rect key="frame" x="10" y="10" width="355" height="190"/>
@@ -205,7 +208,7 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="zNh-m0-wzh" firstAttribute="top" secondItem="T8L-Br-Bsd" secondAttribute="bottom" constant="20" id="BJs-YL-boX"/>
+                                            <constraint firstItem="zNh-m0-wzh" firstAttribute="top" secondItem="T8L-Br-Bsd" secondAttribute="bottom" constant="19" id="BJs-YL-boX"/>
                                             <constraint firstAttribute="trailing" secondItem="A6Y-WR-xsS" secondAttribute="trailing" id="CFD-Yw-EJa"/>
                                             <constraint firstItem="T8L-Br-Bsd" firstAttribute="top" secondItem="A6Y-WR-xsS" secondAttribute="bottom" id="Ghi-ZE-VtP"/>
                                             <constraint firstItem="zNh-m0-wzh" firstAttribute="leading" secondItem="Oyz-nM-5n2" secondAttribute="leading" id="RKf-fx-Pbl"/>
@@ -319,7 +322,7 @@
                                             <constraint firstAttribute="height" constant="41" id="7ww-UZ-T0b"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="asdfasdf" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pqK-Fq-Sx0">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pqK-Fq-Sx0">
                                         <rect key="frame" x="25" y="87" width="325" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="WUj-rj-Zfw"/>
@@ -327,6 +330,9 @@
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="jxq-Qe-Vie" id="LcQ-7U-NUx"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
                                 <constraints>
@@ -596,8 +602,8 @@
     <resources>
         <image name="button-background-image" width="122" height="75"/>
         <image name="character-default" width="89" height="174"/>
-        <image name="character-done" width="133" height="92"/>
         <image name="character-line-full" width="355" height="17"/>
+        <image name="character-waiting" width="109" height="111"/>
         <image name="character-writing" width="145" height="197"/>
         <image name="highlight-mark-complete" width="104" height="104"/>
         <image name="highlight-mark-fail" width="104" height="104"/>

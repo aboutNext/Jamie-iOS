@@ -41,42 +41,50 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    
+        
     }
     
     private func setupUI() {
-//        highlightTextView.becomeFirstResponder()
-        highlightTextView.delegate = self
-        memoTextView.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         tap.delegate = self as? UIGestureRecognizerDelegate
         view.addGestureRecognizer(tap)
-    
+        
         doButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
+        
+        //textView
+        highlightTextView.text = "What is your highlight of the day"
+        highlightTextView.textColor = UIColor.lightGray
+        
+        //evaluationView
+        showEvaluableView(isEvaluabled: true)
     }
     
     private func showEvaluableView(isEvaluabled : Bool) {
         if isEvaluabled {
+            mainCharacterView.isHidden = true
             doButton.isHidden = false
             undoButton.isHidden = false
             return
         }
+        mainCharacterView.isHidden = false
         doButton.isHidden = true
         undoButton.isHidden = true
     }
-
+    
     
     @objc func evaluableButtonTouched(_ sender: UIButton) {
-           if sender === doButton {
-               doImageView.isHidden = false
-               undoImageView.isHidden = true
-               return
-           }
-           doImageView.isHidden = true
-           undoImageView.isHidden = false
-       }
+        if sender === doButton {
+            evaluationImageView.image = UIImage(named: "character-done")!
+            doImageView.isHidden = false
+            undoImageView.isHidden = true
+            return
+        }
+        evaluationImageView.image = UIImage(named: "character-fail")!
+        doImageView.isHidden = true
+        undoImageView.isHidden = false
+    }
     
     private func bottomMenuTap(_ sender: UIButton) {
         
@@ -89,11 +97,11 @@ class HomeViewController: UIViewController {
     func showModal() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let writeVC = storyboard.instantiateViewController(withIdentifier: "WriteViewController")
-
+        
         writeVC.modalPresentationStyle = .overCurrentContext
         present(writeVC, animated: true, completion: nil)
         
-     
+        
     }
 }
 
@@ -102,13 +110,17 @@ extension HomeViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("시작")
         
+        if textView.textColor == UIColor.lightGray {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
         
         if textView == highlightTextView {
             showModal()
             
-//            evaluableView.isHidden = true
-//            showEvaluableView(isEvaluabled: false)
-//            memoView.isHidden = true
+            //            evaluableView.isHidden = true
+            //            showEvaluableView(isEvaluabled: false)
+            //            memoView.isHidden = true
         }
         
         if textView == memoTextView {
@@ -121,9 +133,10 @@ extension HomeViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("끝")
-
-        if textView == highlightTextView {
-            showEvaluableView(isEvaluabled: true)
+        
+        if textView.text.isEmpty {
+            textView.text = "What is your highlight of the day"
+            textView.textColor = UIColor.lightGray
         }
         
         if textView == memoTextView {
@@ -131,4 +144,9 @@ extension HomeViewController: UITextViewDelegate {
             scrollView.setContentOffset(offset, animated: true)
         }
     }
+    
+    //    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    //
+    //        return false
+    //    }
 }
