@@ -24,26 +24,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
-
         GIDSignIn.sharedInstance()?.restorePreviousSignIn();
         
-//        setDatabase()
         let FirebaseAPIControllerHandle = FirebaseAPI()
         FirebaseAPIControllerHandle.setDatabase()
     }
-    
-  
-//    private func setDatabase() {
-//        let rootRef = Database.database().reference()
-//        let childRef = Database.database().reference(withPath: "grocery-items")
-//        let itemsRef = rootRef.child("grocery-items")
-//        let milkRef = itemsRef.child("milk")
-//
-//        print(rootRef.key)   // prints: ""
-//        print(childRef.key)  // prints: "grocery-items"
-//        print(itemsRef.key)  // prints: "grocery-items"
-//        print(milkRef.key)
-//    }
     
     @IBAction func onClickGoogleButton(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
@@ -51,15 +36,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     }
     
     @IBAction func touchUpShowResult(_ sender: Any) {
-        
-//        setFireStore()
-
         let FirebaseAPIControllerHandle = FirebaseAPI()
         FirebaseAPIControllerHandle.getUserData()
-        
-        FirebaseAPIControllerHandle.getAllDocumentsFromCollecton(collectionName: "highlight")
-        FirebaseAPIControllerHandle.getAllDataFromDocuments(collectionName: "highlight")
-
+        FirebaseAPIControllerHandle.getAllDocumentsFromCollecton(collectionName: Constant.firebaseCollectionName)
+        FirebaseAPIControllerHandle.getAllDataFromDocuments(collectionName: Constant.firebaseCollectionName)
         FirebaseAPIControllerHandle.getDatabase()
 
     }

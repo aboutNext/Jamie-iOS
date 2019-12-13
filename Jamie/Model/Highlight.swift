@@ -8,21 +8,18 @@
 
 import Foundation
 
-struct User: Codable, Equatable {
-    var name: String
-}
-
-
-struct Highlight {
+struct Highlight: Codable, Equatable {
     var highlightID: UUID
-    var date: Date
-    var title: String
-    var memo: String?
+    var createdDate: Date
+    var goalDate: Date
+    var goal: String
+    var feedback: String?
     var isSuccess: Bool?
+    var uid: String
 
-    init(highlightID: UUID, date: Date, title: String) {
-        self.highlightID = highlightID
-        self.date = date
-        self.title = title
-    }
+//    init(highlightID: UUID, date: Date, title: String) {
+//        self.highlightID = highlightID
+//        self.date = date
+//        self.title = title
+//    }
 }

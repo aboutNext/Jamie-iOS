@@ -31,6 +31,7 @@
 		B74D88A83B45BEB776CB7E1C /* Pods_Jamie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */; };
 		CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65B238A687200151056 /* MainTabBarViewController.swift */; };
 		CE4BC65E238A69C700151056 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65D238A69C700151056 /* WriteViewController.swift */; };
+		FB3D022F23A3EF32006A7CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D022E23A3EF32006A7CA0 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		CE4BC65D238A69C700151056 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		D635428064ABD9B3479C254C /* Pods-Jamie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jamie.release.xcconfig"; path = "Target Support Files/Pods-Jamie/Pods-Jamie.release.xcconfig"; sourceTree = "<group>"; };
 		E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jamie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB3D022E23A3EF32006A7CA0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				18DA5D0E23862401007DB93E /* Highlight.swift */,
+				FB3D022E23A3EF32006A7CA0 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				188758932385104500C8F7EC /* SettingViewController.swift in Sources */,
 				18DA5D0B238623EE007DB93E /* ListTableViewCell.swift in Sources */,
 				1887587C23850BE400C8F7EC /* AppDelegate.swift in Sources */,
+				FB3D022F23A3EF32006A7CA0 /* User.swift in Sources */,
 				CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */,
 				1871DC3423862D2D00757B60 /* SettingTableViewCell.swift in Sources */,
 				18DA5D0F23862401007DB93E /* Highlight.swift in Sources */,

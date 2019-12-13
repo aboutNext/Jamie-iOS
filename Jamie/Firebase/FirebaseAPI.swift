@@ -22,7 +22,7 @@ class FirebaseAPI {
 //    let userId = Auth.auth().currentUser?.uid
     
     func setDatabase() {
-        let user: User = User(name: "jasmine")
+        let user: User = User(name: "jas!!")
         
         let encodedUser: [String : Any]  = try! Firestore.Encoder().encode(user)
         
@@ -32,20 +32,33 @@ class FirebaseAPI {
                 return
             }
             
-            db.collection("highlight").document("hoge").setData(encodedUser)
+//            db.collection(Constant.firebaseCollectionName).document(userId).setData(encodedUser)
+            
+            let myRef = db.collection(Constant.firebaseCollectionName)
+            let tempId = myRef.document().documentID
+            
+            myRef.document(tempId).setData(encodedUser)
+            
         }
     }
     
     func getDatabase() {
-        let docRef: DocumentReference = db.collection("highlight").document("hoge")
-        docRef.getDocument { (document, _) in
-            if let document = document, document.exists {
-                let user = try? Firestore.Decoder().decode(User.self, from: document.data()!)
-                
-            } else {
-                print("Document does not exist")
+        checkUserExistence { userId in
+            guard let userId = userId else {
+                print("no userId")
+                return
+            }
+            let docRef: DocumentReference = db.collection(Constant.firebaseCollectionName).document(userId)
+            docRef.getDocument { (document, _) in
+                if let document = document, document.exists {
+                    let user = try? Firestore.Decoder().decode(User.self, from: document.data()!)
+                    
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
+        
     }
 }
 
@@ -88,7 +101,7 @@ extension FirebaseAPI {
                 print("no userId")
                 return
             }
-            db.collection("highlight").document(userId).addSnapshotListener { snapshot, error in
+        db.collection(Constant.firebaseCollectionName).document(userId).addSnapshotListener { snapshot, error in
                 if error != nil {
                     
                     return
@@ -220,6 +233,11 @@ extension FirebaseAPI {
     }
     
     func getUserData() {
+        
+    }
+    
+    //    https://firebase.google.com/docs/auth/ios/manage-users?hl=ko
+    func findUuserNum() {
         
     }
 }

@@ -17,7 +17,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        makeTestData()
+//        makeTestData()
     }
     
     func setupUI() {
@@ -26,15 +26,15 @@ class SettingViewController: UIViewController {
         self.view.addSubview(tableView)
     }
     
-    private func makeTestData() {
-        for i in 0..<10 {
-            var data = Highlight.init(highlightID: UUID(), date: Date(), title: "highlight")
-            data.memo = "오늘의 메모 123123 12312312 123123"
-            data.isSuccess = i % 2 == 0 ? true : false
-            highlights.append(data)
-        }
-        tableView.reloadData()
-    }
+//    private func makeTestData() {
+//        for i in 0..<10 {
+//            var data = Highlight.init(highlightID: UUID(), date: Date(), title: "highlight")
+//            data.memo = "오늘의 메모 123123 12312312 123123"
+//            data.isSuccess = i % 2 == 0 ? true : false
+//            highlights.append(data)
+//        }
+//        tableView.reloadData()
+//    }
 }
 
 
@@ -67,7 +67,7 @@ extension SettingViewController: UITableViewDataSource {
         //Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM dd"
-        let dateString =  dateFormatter.string(from: data.date)
+        let dateString =  dateFormatter.string(from: data.createdDate)
 //        cell.dateLabel.text = dateString
 //        cell.titleLabel.text = data.title
         //

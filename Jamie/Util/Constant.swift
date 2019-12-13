@@ -12,4 +12,7 @@ class Constant: NSObject {
 
     //homeViewController
     
+    
+    //firebaseAPI
+    static let firebaseCollectionName: String = "contents"
 }

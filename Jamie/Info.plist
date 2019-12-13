@@ -32,7 +32,7 @@
 	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
 	<true/>
 	<key>FirebaseScreenReportingEnabled</key>
-	<false/>
+	<true/>
 	<key>LSApplicationCategoryType</key>
 	<string>FirebaseScreenReportingEnabled</string>
 	<key>LSRequiresIPhoneOS</key>
