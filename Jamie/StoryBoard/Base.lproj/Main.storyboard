@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiB-ga-fis">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UYD-6c-pWF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="xRT-D8-vpl">
+            <objects>
+                <viewController id="UYD-6c-pWF" customClass="LoginViewController" customModule="Jamie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IdE-hI-B0B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Az6-Ix-HwB">
+                                <rect key="frame" x="184" y="438" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onClickGoogleButton:" destination="UYD-6c-pWF" eventType="touchUpInside" id="thY-bO-1JY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwK-YF-ccy">
+                                <rect key="frame" x="184" y="530" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="touchUpShowResult:" destination="UYD-6c-pWF" eventType="touchUpInside" id="aGE-Uo-ihb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Az6-Ix-HwB" firstAttribute="centerY" secondItem="gsA-HW-Btt" secondAttribute="centerY" id="RjE-52-JgW"/>
+                            <constraint firstItem="JwK-YF-ccy" firstAttribute="centerX" secondItem="gsA-HW-Btt" secondAttribute="centerX" id="UTq-oZ-ydK"/>
+                            <constraint firstItem="JwK-YF-ccy" firstAttribute="top" secondItem="Az6-Ix-HwB" secondAttribute="bottom" constant="62" id="qFe-r9-P8g"/>
+                            <constraint firstItem="Az6-Ix-HwB" firstAttribute="centerX" secondItem="gsA-HW-Btt" secondAttribute="centerX" id="yzG-7f-q20"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gsA-HW-Btt"/>
+                    </view>
+                    <connections>
+                        <outlet property="signInGoogleButton" destination="RjE-52-JgW" id="oeN-p4-62l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PmW-lN-oP3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="46"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="pgP-Eg-KIc">
             <objects>

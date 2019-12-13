@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct User: Codable, Equatable {
+    var name: String
+}
+
+
 struct Highlight {
     var highlightID: UUID
     var date: Date

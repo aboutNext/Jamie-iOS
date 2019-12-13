@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,9 @@
 		18263E4923911152004018A4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18263E4823911152004018A4 /* Constant.swift */; };
 		185C0357238F9CFF0077D2E9 /* CustomTabBarButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185C0356238F9CFF0077D2E9 /* CustomTabBarButtonView.xib */; };
 		185C0359238F9D180077D2E9 /* CustomTabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C0358238F9D180077D2E9 /* CustomTabBarButtonView.swift */; };
+		1860E33523A391FD005107BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860E33423A391FD005107BB /* LoginViewController.swift */; };
+		1860E33823A39248005107BB /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860E33723A39248005107BB /* FirebaseAPI.swift */; };
+		1860E33A23A394E7005107BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1860E33923A394E7005107BB /* GoogleService-Info.plist */; };
 		1871DC3323862D2D00757B60 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1871DC3123862D2D00757B60 /* SettingTableViewCell.xib */; };
 		1871DC3423862D2D00757B60 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871DC3223862D2D00757B60 /* SettingTableViewCell.swift */; };
 		1887587C23850BE400C8F7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887587B23850BE400C8F7EC /* AppDelegate.swift */; };
@@ -25,6 +28,7 @@
 		18DA5D0B238623EE007DB93E /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5D0A238623EE007DB93E /* ListTableViewCell.swift */; };
 		18DA5D0D238623FA007DB93E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5D0C238623FA007DB93E /* ListViewController.swift */; };
 		18DA5D0F23862401007DB93E /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA5D0E23862401007DB93E /* Highlight.swift */; };
+		B74D88A83B45BEB776CB7E1C /* Pods_Jamie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */; };
 		CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65B238A687200151056 /* MainTabBarViewController.swift */; };
 		CE4BC65E238A69C700151056 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65D238A69C700151056 /* WriteViewController.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +39,9 @@
 		18263E4823911152004018A4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		185C0356238F9CFF0077D2E9 /* CustomTabBarButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTabBarButtonView.xib; sourceTree = "<group>"; };
 		185C0358238F9D180077D2E9 /* CustomTabBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButtonView.swift; sourceTree = "<group>"; };
+		1860E33423A391FD005107BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1860E33723A39248005107BB /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
+		1860E33923A394E7005107BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1871DC3123862D2D00757B60 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		1871DC3223862D2D00757B60 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		1887587823850BE400C8F7EC /* Jamie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jamie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,8 +57,11 @@
 		18DA5D0A238623EE007DB93E /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		18DA5D0C238623FA007DB93E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		18DA5D0E23862401007DB93E /* Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
+		293998AFA99D50C84BAFB84C /* Pods-Jamie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jamie.debug.xcconfig"; path = "Target Support Files/Pods-Jamie/Pods-Jamie.debug.xcconfig"; sourceTree = "<group>"; };
 		CE4BC65B238A687200151056 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CE4BC65D238A69C700151056 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		D635428064ABD9B3479C254C /* Pods-Jamie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jamie.release.xcconfig"; path = "Target Support Files/Pods-Jamie/Pods-Jamie.release.xcconfig"; sourceTree = "<group>"; };
+		E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jamie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +69,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B74D88A83B45BEB776CB7E1C /* Pods_Jamie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		078EB194F6B4ABC257C004D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		18263E4723911135004018A4 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,11 +92,21 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		1860E33623A39223005107BB /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				1860E33723A39248005107BB /* FirebaseAPI.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		1887586F23850BE400C8F7EC = {
 			isa = PBXGroup;
 			children = (
 				1887587A23850BE400C8F7EC /* Jamie */,
 				1887587923850BE400C8F7EC /* Products */,
+				9283A67300DEBD89E4357A89 /* Pods */,
+				078EB194F6B4ABC257C004D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,9 +125,11 @@
 				188758982385109800C8F7EC /* ViewController */,
 				188758912385102F00C8F7EC /* view */,
 				18263E4723911135004018A4 /* Util */,
+				1860E33623A39223005107BB /* Firebase */,
 				1887589C238510FD00C8F7EC /* StoryBoard */,
 				1887587B23850BE400C8F7EC /* AppDelegate.swift */,
 				1887587D23850BE400C8F7EC /* SceneDelegate.swift */,
+				1860E33923A394E7005107BB /* GoogleService-Info.plist */,
 				1887588423850BE400C8F7EC /* Assets.xcassets */,
 				1887588623850BE400C8F7EC /* LaunchScreen.storyboard */,
 				1887588923850BE400C8F7EC /* Info.plist */,
@@ -129,6 +160,7 @@
 				18DA5D0C238623FA007DB93E /* ListViewController.swift */,
 				188758922385104500C8F7EC /* SettingViewController.swift */,
 				CE4BC65B238A687200151056 /* MainTabBarViewController.swift */,
+				1860E33423A391FD005107BB /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -149,6 +181,15 @@
 			path = StoryBoard;
 			sourceTree = "<group>";
 		};
+		9283A67300DEBD89E4357A89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				293998AFA99D50C84BAFB84C /* Pods-Jamie.debug.xcconfig */,
+				D635428064ABD9B3479C254C /* Pods-Jamie.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,9 +197,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1887588C23850BE400C8F7EC /* Build configuration list for PBXNativeTarget "Jamie" */;
 			buildPhases = (
+				96A69FBA369B0B70FADC34B8 /* [CP] Check Pods Manifest.lock */,
 				1887587423850BE400C8F7EC /* Sources */,
 				1887587523850BE400C8F7EC /* Frameworks */,
 				1887587623850BE400C8F7EC /* Resources */,
+				C50E198663E39798D3CE2CC8 /* [CP] Embed Pods Frameworks */,
+				E2C027699E9BC8DD9F9E8156 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1887588823850BE400C8F7EC /* LaunchScreen.storyboard in Resources */,
+				1860E33A23A394E7005107BB /* GoogleService-Info.plist in Resources */,
 				18DA5D09238623EA007DB93E /* ListTableViewCell.xib in Resources */,
 				1871DC3323862D2D00757B60 /* SettingTableViewCell.xib in Resources */,
 				185C0357238F9CFF0077D2E9 /* CustomTabBarButtonView.xib in Resources */,
@@ -219,11 +264,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		96A69FBA369B0B70FADC34B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Jamie-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C50E198663E39798D3CE2CC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jamie/Pods-Jamie-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jamie/Pods-Jamie-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jamie/Pods-Jamie-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2C027699E9BC8DD9F9E8156 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jamie/Pods-Jamie-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jamie/Pods-Jamie-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jamie/Pods-Jamie-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1887587423850BE400C8F7EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1860E33523A391FD005107BB /* LoginViewController.swift in Sources */,
 				188758932385104500C8F7EC /* SettingViewController.swift in Sources */,
 				18DA5D0B238623EE007DB93E /* ListTableViewCell.swift in Sources */,
 				1887587C23850BE400C8F7EC /* AppDelegate.swift in Sources */,
@@ -236,6 +341,7 @@
 				180EC319238D2A5F00C97221 /* CustomNavigationView.swift in Sources */,
 				185C0359238F9D180077D2E9 /* CustomTabBarButtonView.swift in Sources */,
 				CE4BC65E238A69C700151056 /* WriteViewController.swift in Sources */,
+				1860E33823A39248005107BB /* FirebaseAPI.swift in Sources */,
 				188758902385100D00C8F7EC /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +484,7 @@
 		};
 		1887588D23850BE400C8F7EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 293998AFA99D50C84BAFB84C /* Pods-Jamie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +503,7 @@
 		};
 		1887588E23850BE400C8F7EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D635428064ABD9B3479C254C /* Pods-Jamie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
