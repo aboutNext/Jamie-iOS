@@ -67,7 +67,7 @@ extension SettingViewController: UITableViewDataSource {
         //Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM dd"
-        let dateString =  dateFormatter.string(from: data.createdDate)
+//        let dateString =  dateFormatter.string(from: data.createdDate)
 //        cell.dateLabel.text = dateString
 //        cell.titleLabel.text = data.title
         //

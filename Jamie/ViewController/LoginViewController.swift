@@ -16,18 +16,55 @@ import FirebaseFirestore
 
 class LoginViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var signInGoogleButton: GIDSignInButton!
-    
-
     var docRef: DatabaseReference!
+    var firebaseAPIControllerHandle: FirebaseAPI?
+    var contents = [Highlight]()
+    var uid: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn();
         
-        let FirebaseAPIControllerHandle = FirebaseAPI()
-        FirebaseAPIControllerHandle.setDatabase()
+        firebaseAPIControllerHandle = FirebaseAPI()
+        guard let firebaseHandle = firebaseAPIControllerHandle else { return }
+        
+        firebaseHandle.checkLoginStatus { (result) in
+            if result {
+                //membership 조회
+                
+                //data 조회
+                firebaseHandle.getContentsData { Highlights in
+                    self.contents = Highlights
+                }
+                return
+            } else {
+                
+                //membership 없으면 생성
+                firebaseHandle.joinMembership()
+
+                //or 로그인 화면 연결
+//                let vc = self.switchToLoginPage()
+//                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    deinit {
+         guard let firebaseHandle = firebaseAPIControllerHandle else { return }
+        firebaseHandle.removeCheckingLoginStatus()
+    }
+
+    
+    private func switchToLoginPage() -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+        return controller
     }
     
     @IBAction func onClickGoogleButton(_ sender: Any) {
@@ -35,13 +72,25 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.presentingViewController = self
     }
     
+    
     @IBAction func touchUpShowResult(_ sender: Any) {
-        let FirebaseAPIControllerHandle = FirebaseAPI()
-        FirebaseAPIControllerHandle.getUserData()
-        FirebaseAPIControllerHandle.getAllDocumentsFromCollecton(collectionName: Constant.firebaseCollectionName)
-        FirebaseAPIControllerHandle.getAllDataFromDocuments(collectionName: Constant.firebaseCollectionName)
-        FirebaseAPIControllerHandle.getDatabase()
+        let firebaseHandle = FirebaseAPI()
 
+        //TODO : saveButton에 사용
+        guard let fakeData = makeFakeHightlightData() else { return }
+//        firebaseAPIControllerHandle?.addDataAtDocument(collectionName: Constant.firebaseContentsCollectionName, data: fakeData)
+        
+        //TODO : List tab에서 refresh call 에 사용
+//        firebaseAPIControllerHandle.getContentsData { highlights in
+//            self.contents = highlights
+//        }
+    }
+    
+    private func makeFakeHightlightData() -> Highlight? {
+        guard let uid = uid else { return nil }
+        let hightlight = Highlight.init(highlightID: "asdf123123", createdAt: Date(), goalDate: nil, goal: "testtitle goal 12123123", uid: uid, feedback: "ayayyaayya", isSuccess: true)
+        
+        return hightlight
     }
     
     @available(iOS 9.0, *)

@@ -14,5 +14,8 @@ class Constant: NSObject {
     
     
     //firebaseAPI
-    static let firebaseCollectionName: String = "contents"
+    static let firebaseContentsCollectionName: String = "contents"
+    static let firebaseUserCollectionName: String = "users"
+
+    
 }

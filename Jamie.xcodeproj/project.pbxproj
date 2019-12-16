@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1800155D23A768C80034108E /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800155C23A768C80034108E /* TestModel.swift */; };
 		180EC319238D2A5F00C97221 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EC318238D2A5F00C97221 /* CustomNavigationView.swift */; };
 		180EC31B238D2A6A00C97221 /* CustomNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180EC31A238D2A6A00C97221 /* CustomNavigationView.xib */; };
 		18263E4923911152004018A4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18263E4823911152004018A4 /* Constant.swift */; };
@@ -31,10 +32,11 @@
 		B74D88A83B45BEB776CB7E1C /* Pods_Jamie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */; };
 		CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65B238A687200151056 /* MainTabBarViewController.swift */; };
 		CE4BC65E238A69C700151056 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65D238A69C700151056 /* WriteViewController.swift */; };
-		FB3D022F23A3EF32006A7CA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D022E23A3EF32006A7CA0 /* User.swift */; };
+		FB3D022F23A3EF32006A7CA0 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D022E23A3EF32006A7CA0 /* Member.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1800155C23A768C80034108E /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		180EC318238D2A5F00C97221 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		180EC31A238D2A6A00C97221 /* CustomNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomNavigationView.xib; sourceTree = "<group>"; };
 		18263E4823911152004018A4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		CE4BC65D238A69C700151056 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		D635428064ABD9B3479C254C /* Pods-Jamie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jamie.release.xcconfig"; path = "Target Support Files/Pods-Jamie/Pods-Jamie.release.xcconfig"; sourceTree = "<group>"; };
 		E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jamie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB3D022E23A3EF32006A7CA0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FB3D022E23A3EF32006A7CA0 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				18DA5D0E23862401007DB93E /* Highlight.swift */,
-				FB3D022E23A3EF32006A7CA0 /* User.swift */,
+				FB3D022E23A3EF32006A7CA0 /* Member.swift */,
+				1800155C23A768C80034108E /* TestModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,7 +338,7 @@
 				188758932385104500C8F7EC /* SettingViewController.swift in Sources */,
 				18DA5D0B238623EE007DB93E /* ListTableViewCell.swift in Sources */,
 				1887587C23850BE400C8F7EC /* AppDelegate.swift in Sources */,
-				FB3D022F23A3EF32006A7CA0 /* User.swift in Sources */,
+				FB3D022F23A3EF32006A7CA0 /* Member.swift in Sources */,
 				CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */,
 				1871DC3423862D2D00757B60 /* SettingTableViewCell.swift in Sources */,
 				18DA5D0F23862401007DB93E /* Highlight.swift in Sources */,
@@ -346,6 +349,7 @@
 				185C0359238F9D180077D2E9 /* CustomTabBarButtonView.swift in Sources */,
 				CE4BC65E238A69C700151056 /* WriteViewController.swift in Sources */,
 				1860E33823A39248005107BB /* FirebaseAPI.swift in Sources */,
+				1800155D23A768C80034108E /* TestModel.swift in Sources */,
 				188758902385100D00C8F7EC /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

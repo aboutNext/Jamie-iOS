@@ -67,8 +67,8 @@ extension ListViewController: UITableViewDataSource {
         //Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM dd"
-        let dateString =  dateFormatter.string(from: data.createdDate)
-        cell.dateLabel.text = dateString
+//        let dateString =  dateFormatter.string(from: data.createdDate)
+//        cell.dateLabel.text = dateString
 //        cell.titleLabel.text = data.title
 //        
 //        if let name = card.imageName, let testImage = UIImage(named: name) {

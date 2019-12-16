@@ -8,18 +8,39 @@
 
 import Foundation
 
-struct Highlight: Codable, Equatable {
-    var highlightID: UUID
-    var createdDate: Date
-    var goalDate: Date
+struct Highlight {
+    var highlightID: String?
+    var createdAt: Date?
+    var goalDate: Date?
     var goal: String
+    var uid: String
     var feedback: String?
     var isSuccess: Bool?
-    var uid: String
 
-//    init(highlightID: UUID, date: Date, title: String) {
-//        self.highlightID = highlightID
-//        self.date = date
-//        self.title = title
-//    }
+    
+    var dictionary: [String: Any] {
+        return [
+//            "highlightID": highlightID,
+//            "createdAt": createdAt,
+//            "goalDate": goalDate,
+            "goal": goal,
+            "uid": uid
+        ]
+    }
+}
+
+extension Highlight {
+    init?(dictionary: [String : Any]) {
+//        guard let highlightID = dictionary["highlightID"] as? String,
+//            let createdAt = dictionary["createdAt"] as? Date,
+//            let goalDate = dictionary["goalDate"] as? Date,
+           guard let goal = dictionary["goal"] as? String,
+            let uid = dictionary["uid"] as? String else {
+                return nil
+        }
+        self.init(goal: goal, uid: uid)
+
+//        self.init(highlightID: highlightID, createdAt: createdAt, goalDate: goalDate, goal: goal, uid: uid)
+
+    }
 }
