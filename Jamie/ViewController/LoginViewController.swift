@@ -39,9 +39,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
                 //membership 조회
                 
                 //data 조회
-                firebaseHandle.getContentsData { Highlights in
-                    self.contents = Highlights
-                }
+//                firebaseHandle.getContentsData { Highlights in
+//                    self.contents = Highlights
+//                }
                 return
             } else {
                 
@@ -77,20 +77,18 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         let firebaseHandle = FirebaseAPI()
 
         //TODO : saveButton에 사용
-        guard let fakeData = makeFakeHightlightData() else { return }
-//        firebaseAPIControllerHandle?.addDataAtDocument(collectionName: Constant.firebaseContentsCollectionName, data: fakeData)
+
+//        firebaseHandle.addNewHighLightAtDocument(collectionName: Constant.firebaseContentsCollectionName)
+        
+       
         
         //TODO : List tab에서 refresh call 에 사용
-//        firebaseAPIControllerHandle.getContentsData { highlights in
+        firebaseHandle.getContentsData { highlights in
+            self.contents.append(highlights)
 //            self.contents = highlights
-//        }
-    }
-    
-    private func makeFakeHightlightData() -> Highlight? {
-        guard let uid = uid else { return nil }
-        let hightlight = Highlight.init(highlightID: "asdf123123", createdAt: Date(), goalDate: nil, goal: "testtitle goal 12123123", uid: uid, feedback: "ayayyaayya", isSuccess: true)
-        
-        return hightlight
+//            print(self.contents)
+        }
+//
     }
     
     @available(iOS 9.0, *)

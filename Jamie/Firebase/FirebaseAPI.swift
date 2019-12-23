@@ -12,6 +12,7 @@ import GoogleSignIn
 import FirebaseDatabase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import CodableFirebase
 
 let db = Firestore.firestore()
 
@@ -128,32 +129,33 @@ extension FirebaseAPI {
         return true
     }
     
-    func addDataAtDocument(collectionName: String, data: Dictionary <String, AnyObject>) {
-        checkUserExistence { userId in
-            guard let userId = userId else {
-                print("no userId")
-                return
-            }
-            //            db.collection(collectionName).document(userId).setData(data)
-            db.collection(collectionName).document().setData(["title" : 2020, "memo" : "test", "new" : "value"])
-        }
-    }
-    
-    func addNewHighLightAtDocument(collectionName: String, data: Highlight) {
+
+    func addNewHighLightAtDocument(collectionName: String) {
         checkUserExistence { userId in
             guard let userId = userId else {
                 print("no userId")
                 return
             }
             
-//            db.collection(collectionName).document(userId).setData(data)
-            db.collection(collectionName).document().setData(["title" : 2020, "memo" : "test", "new" : "value"])
+            let date = Date()
+            let hightlight = Highlight(highlightID: "highlightID123", uid: userId,  createdAt: date, goalDate: date, goal: "어썸 하은 영상보기", feedback: "시청완료", isSuccess: true)
+           
+            
+            let data = try! FirestoreEncoder().encode(hightlight)
+            
+            print(data)
+            
+            db.collection(collectionName).document().setData(data) { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
         }
     }
     
-    
     func addSnapshotListener(collectionName: String, data: Dictionary <String, AnyObject>) {
-        
         checkUserExistence { userId in
             guard let userId = userId else {
                 print("no userId")
@@ -165,7 +167,6 @@ extension FirebaseAPI {
                     return
                 }
                 
-                
 //                if let snapshot = snapshot, let data = snapshot.data(){
 //                    for doc in data {
 //
@@ -175,7 +176,7 @@ extension FirebaseAPI {
         }
     }
 
-    
+    //Delete
     func updateDataAtDocument(collectionName: String) {
         checkUserExistence { userId in
             guard let userId = userId else {
@@ -216,35 +217,42 @@ extension FirebaseAPI {
                 completion(documentIdArr)
         }
     }
-    
-    func getContentsData(completion: @escaping(_ highlightArr: [Highlight]) -> Void) {
+  
+    //TODO : [Highlight]일 때, completion call check 방법
+    func getContentsData(completion: @escaping(_ highlightArr: Highlight) -> Void) {
         var highlightArr = [Highlight]()
-        //TODO : completion call check 방법
         var total = 0
         self.getDocumentIDs(collectionName: Constant.firebaseContentsCollectionName) { documentIDs in
             for documentID in documentIDs {
-                let docRef = db.collection(Constant.firebaseContentsCollectionName).document(documentID)
-                docRef.getDocument { querySnapshot, error in
-                    
-                    guard error == nil, let doc = querySnapshot, doc.exists == true else {
+                Firestore.firestore().collection(Constant.firebaseContentsCollectionName).document(documentID).getDocument { document, error in
+                
+                    if error != nil {
                         print("getContentsData Error \(String(describing: error))")
                         return
                     }
-                    
-                    guard let dicData = doc.data(), let highlight = Highlight.init(dictionary: dicData) else {
-                        print("make Highlight objects fail")
-                        return
-                    }
-                    
-                    total += 1
-                    highlightArr.append(highlight)
-//                    print(highlightArr)
-                    
-                    if total == documentIDs.count {
-                        completion(highlightArr)
+        
+                    if let document = document, var data = document.data() {
+                        let goalDate = data["goalDate"] as! Timestamp
+                        let createdAt = data["createdAt"] as! Timestamp
+                        let goaldate = goalDate.dateValue()
+                        let createdDate = createdAt.dateValue()
+                        
+                        data["goalDate"] = goaldate
+                        data["createdAt"] = createdDate
+
+                        let highlight = try! FirestoreDecoder().decode(Highlight.self, from: data)
+                        completion(highlight)
+//                        print("Model: \(data)")
+
+                    } else {
+                        print("Document does not exist")
                     }
                 }
+//                total += 1
             }
+//            if total == documentIDs.count {
+//                completion(highlightArr)
+//            }
         }
     }
     
@@ -260,7 +268,7 @@ extension FirebaseAPI {
                     
                     return
                 }
-                print(document?.data())
+
                 if let doc = document, doc.exists {
                     let documentData = doc.data()
                     
@@ -354,3 +362,10 @@ extension FirebaseAPI {
         
     }
 }
+
+
+extension DocumentReference: DocumentReferenceType {}
+extension GeoPoint: GeoPointType {}
+extension FieldValue: FieldValueType {}
+extension Timestamp: TimestampType {}
+

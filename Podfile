@@ -16,6 +16,7 @@ target 'Jamie' do
   pod 'Firebase/Database'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'CodableFirebase'
 
 
 end

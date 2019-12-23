@@ -8,39 +8,14 @@
 
 import Foundation
 
-struct Highlight {
-    var highlightID: String?
+struct Highlight : Codable {
+    var highlightID: String
+    var uid: String
     var createdAt: Date?
     var goalDate: Date?
-    var goal: String
-    var uid: String
+    var goal: String?
     var feedback: String?
     var isSuccess: Bool?
-
     
-    var dictionary: [String: Any] {
-        return [
-//            "highlightID": highlightID,
-//            "createdAt": createdAt,
-//            "goalDate": goalDate,
-            "goal": goal,
-            "uid": uid
-        ]
-    }
 }
 
-extension Highlight {
-    init?(dictionary: [String : Any]) {
-//        guard let highlightID = dictionary["highlightID"] as? String,
-//            let createdAt = dictionary["createdAt"] as? Date,
-//            let goalDate = dictionary["goalDate"] as? Date,
-           guard let goal = dictionary["goal"] as? String,
-            let uid = dictionary["uid"] as? String else {
-                return nil
-        }
-        self.init(goal: goal, uid: uid)
-
-//        self.init(highlightID: highlightID, createdAt: createdAt, goalDate: goalDate, goal: goal, uid: uid)
-
-    }
-}

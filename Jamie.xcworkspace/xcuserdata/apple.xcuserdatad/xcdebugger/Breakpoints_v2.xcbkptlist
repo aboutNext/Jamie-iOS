@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2AE5D412-2F7C-4E23-8EBF-E13CCFA62CC1"
+            uuid = "2A2CCBDF-30E0-4107-AA9C-C8DE09DC7032"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Jamie/Firebase/FirebaseAPI.swift"
+            filePath = "Jamie/ViewController/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "addNewHighLightAtDocument(collectionName:data:)"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "touchUpShowResult(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "167A6E99-F97B-4ED2-A50D-9ABD32F89157"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jamie/ViewController/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "touchUpShowResult(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
