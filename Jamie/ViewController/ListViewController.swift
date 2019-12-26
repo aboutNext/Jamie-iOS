@@ -62,7 +62,7 @@ extension ListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        let data = highlights[indexPath.row]
+//        let data = highlights[indexPath.row]
 
         //Date
         let dateFormatter = DateFormatter()

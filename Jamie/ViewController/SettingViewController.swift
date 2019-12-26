@@ -62,7 +62,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as! SettingTableViewCell
-        let data = highlights[indexPath.row]
+//        let data = highlights[indexPath.row]
         
         //Date
         let dateFormatter = DateFormatter()

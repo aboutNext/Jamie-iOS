@@ -130,7 +130,7 @@ extension FirebaseAPI {
     }
     
 
-    func addNewHighLightAtDocument(collectionName: String) {
+    func addNewHighlightAtDocument(collectionName: String, content: String) {
         checkUserExistence { userId in
             guard let userId = userId else {
                 print("no userId")
@@ -138,8 +138,7 @@ extension FirebaseAPI {
             }
             
             let date = Date()
-            let hightlight = Highlight(highlightID: "highlightID123", uid: userId,  createdAt: date, goalDate: date, goal: "어썸 하은 영상보기", feedback: "시청완료", isSuccess: true)
-           
+            let hightlight = Highlight.init(uid: userId, createdDate: date, updatedDate: date, targetDate: date, highlight: content, memo: nil, status: "none")
             
             let data = try! FirestoreEncoder().encode(hightlight)
             
@@ -232,13 +231,17 @@ extension FirebaseAPI {
                     }
         
                     if let document = document, var data = document.data() {
-                        let goalDate = data["goalDate"] as! Timestamp
-                        let createdAt = data["createdAt"] as! Timestamp
-                        let goaldate = goalDate.dateValue()
-                        let createdDate = createdAt.dateValue()
-                        
-                        data["goalDate"] = goaldate
-                        data["createdAt"] = createdDate
+                        let createdDate = data["createdDate"] as! Timestamp
+                        let updatedDate = data["updatedDate"] as! Timestamp
+                        let targetDate = data["targetDate"] as! Timestamp
+
+                        let createdValue = createdDate.dateValue()
+                        let updatedValue = updatedDate.dateValue()
+                        let targetValue = targetDate.dateValue()
+
+                        data["createdDate"] = createdValue
+                        data["updatedDate"] = updatedValue
+                        data["targetDate"] = targetValue
 
                         let highlight = try! FirestoreDecoder().decode(Highlight.self, from: data)
                         completion(highlight)

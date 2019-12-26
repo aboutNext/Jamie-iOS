@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
+import FirebaseDatabase
+import FirebaseFirestore
 
 class WriteViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var updateDoneButton: UIButton!
+    
+    var docRef: DatabaseReference!
+    var firebaseAPIControllerHandle: FirebaseAPI?
+    var contents = [Highlight]()
+    var uid: String?
+    var isUpdatedMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +38,8 @@ class WriteViewController: UIViewController {
         textView.textColor = UIColor.lightGray
         
         dismissButton.addTarget(self, action: #selector(touchUpDismissView), for: .touchUpInside)
-        
+        updateDoneButton.addTarget(self, action: #selector(touchUpDoneButton), for: .touchUpInside)
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         tap.delegate = self as? UIGestureRecognizerDelegate
         view.addGestureRecognizer(tap)
@@ -35,6 +48,17 @@ class WriteViewController: UIViewController {
     @objc func touchUpDismissView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @objc func touchUpDoneButton(_ sender: UIButton) {
+        let firebaseHandle = FirebaseAPI()
+        
+        //isUpdatedMode
+        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text)
+        
+        
+        
+    }
+    
     
     @objc func dismissKeyboard() {
         view.endEditing(true)

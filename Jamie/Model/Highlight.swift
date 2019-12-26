@@ -9,13 +9,12 @@
 import Foundation
 
 struct Highlight : Codable {
-    var highlightID: String
-    var uid: String
-    var createdAt: Date?
-    var goalDate: Date?
-    var goal: String?
-    var feedback: String?
-    var isSuccess: Bool?
-    
+    var uid: String?
+    var createdDate: Date?
+    var updatedDate: Date?
+    var targetDate: Date?
+    var highlight: String?
+    var memo: String?
+    var status: String?
 }
 

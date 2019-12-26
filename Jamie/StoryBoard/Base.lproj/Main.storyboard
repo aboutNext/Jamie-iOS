@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UYD-6c-pWF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XiB-ga-fis">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -325,6 +325,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqG-Tm-LB0" userLabel="TopView">
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQO-QT-Ruh">
+                                        <rect key="frame" x="312" y="13" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="M1Q-Vc-3yh"/>
+                                            <constraint firstAttribute="height" constant="30" id="Teh-UW-OG9"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-Q3-xg4">
                                         <rect key="frame" x="10" y="3" width="50" height="50"/>
                                         <constraints>
@@ -335,9 +343,11 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FQO-QT-Ruh" secondAttribute="trailing" constant="17" id="2r6-jm-kvH"/>
                                     <constraint firstItem="Rub-Q3-xg4" firstAttribute="leading" secondItem="kqG-Tm-LB0" secondAttribute="leading" constant="10" id="GJw-zE-dSD"/>
                                     <constraint firstAttribute="height" constant="56" id="NQo-ne-agw"/>
                                     <constraint firstItem="Rub-Q3-xg4" firstAttribute="centerY" secondItem="kqG-Tm-LB0" secondAttribute="centerY" id="nDJ-Yj-hcv"/>
+                                    <constraint firstItem="FQO-QT-Ruh" firstAttribute="centerY" secondItem="kqG-Tm-LB0" secondAttribute="centerY" id="s5y-dV-6q8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvr-gd-QI7" userLabel="TextView">
@@ -436,6 +446,7 @@
                     <connections>
                         <outlet property="dismissButton" destination="Rub-Q3-xg4" id="lKD-sv-d9d"/>
                         <outlet property="textView" destination="pqK-Fq-Sx0" id="Opf-0K-Mer"/>
+                        <outlet property="updateDoneButton" destination="FQO-QT-Ruh" id="pKj-ko-HDb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uE-gS-Ab2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
