@@ -31,6 +31,8 @@
 		B74D88A83B45BEB776CB7E1C /* Pods_Jamie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */; };
 		CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65B238A687200151056 /* MainTabBarViewController.swift */; };
 		CE4BC65E238A69C700151056 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BC65D238A69C700151056 /* WriteViewController.swift */; };
+		FB123A5523C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB123A5423C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf */; };
+		FB123A5923C212D100B89C29 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB123A5823C212D100B89C29 /* Colors.swift */; };
 		FB3D022F23A3EF32006A7CA0 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D022E23A3EF32006A7CA0 /* Member.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		CE4BC65D238A69C700151056 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		D635428064ABD9B3479C254C /* Pods-Jamie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jamie.release.xcconfig"; path = "Target Support Files/Pods-Jamie/Pods-Jamie.release.xcconfig"; sourceTree = "<group>"; };
 		E3100FA26FBBEC2D9F82BA6D /* Pods_Jamie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jamie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB123A5423C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 왼손잡이도 예뻐.ttf"; sourceTree = "<group>"; };
+		FB123A5823C212D100B89C29 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FB3D022E23A3EF32006A7CA0 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				18263E4823911152004018A4 /* Constant.swift */,
+				FB123A5823C212D100B89C29 /* Colors.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 				1887587B23850BE400C8F7EC /* AppDelegate.swift */,
 				1887587D23850BE400C8F7EC /* SceneDelegate.swift */,
 				1860E33923A394E7005107BB /* GoogleService-Info.plist */,
+				FB123A5323C20FB500B89C29 /* Font */,
 				1887588423850BE400C8F7EC /* Assets.xcassets */,
 				1887588623850BE400C8F7EC /* LaunchScreen.storyboard */,
 				1887588923850BE400C8F7EC /* Info.plist */,
@@ -191,6 +197,14 @@
 				D635428064ABD9B3479C254C /* Pods-Jamie.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FB123A5323C20FB500B89C29 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				FB123A5423C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +276,7 @@
 				180EC31B238D2A6A00C97221 /* CustomNavigationView.xib in Resources */,
 				1887588523850BE400C8F7EC /* Assets.xcassets in Resources */,
 				1887588323850BE400C8F7EC /* Main.storyboard in Resources */,
+				FB123A5523C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +349,7 @@
 				1860E33523A391FD005107BB /* LoginViewController.swift in Sources */,
 				188758932385104500C8F7EC /* SettingViewController.swift in Sources */,
 				18DA5D0B238623EE007DB93E /* ListTableViewCell.swift in Sources */,
+				FB123A5923C212D100B89C29 /* Colors.swift in Sources */,
 				1887587C23850BE400C8F7EC /* AppDelegate.swift in Sources */,
 				FB3D022F23A3EF32006A7CA0 /* Member.swift in Sources */,
 				CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 class SettingTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var settingTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
@@ -23,6 +24,5 @@ class SettingTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-    }
-    
+    }    
 }

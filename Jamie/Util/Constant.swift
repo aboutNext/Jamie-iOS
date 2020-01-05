@@ -18,4 +18,11 @@ class Constant: NSObject {
     static let firebaseUserCollectionName: String = "users"
 
     
+    //settingViewController
+    static let settingViewHeightForHeader: CGFloat = 46.0
+    
+    //listViewController
+    static let listViewHeightForHeader: CGFloat = 97.0
+
+    
 }
