@@ -57,8 +57,18 @@ class HomeViewController: UIViewController {
         highlightTextView.text = "What is your highlight of the day"
         highlightTextView.textColor = UIColor.lightGray
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
+
+        highlightTextView.addGestureRecognizer(tapRecognizer)
+
+       
         //evaluationView
         showEvaluableView(isEvaluabled: true)
+    }
+    
+    @objc func tappedTextView(tapGesture:
+        UIGestureRecognizer) {
+        showModal()
     }
     
     private func showEvaluableView(isEvaluabled : Bool) {
@@ -103,50 +113,4 @@ class HomeViewController: UIViewController {
         
         
     }
-}
-
-extension HomeViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        print("시작")
-        
-        if textView.textColor == UIColor.lightGray {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-        
-        if textView == highlightTextView {
-            showModal()
-            
-            //            evaluableView.isHidden = true
-            //            showEvaluableView(isEvaluabled: false)
-            //            memoView.isHidden = true
-        }
-        
-        if textView == memoTextView {
-            let height = textView.frame.size.height + evaluableView.frame.size.height
-            let offset = CGPoint(x:0, y:height)
-            scrollView.setContentOffset(offset, animated: true)
-            
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        print("끝")
-        
-        if textView.text.isEmpty {
-            textView.text = "What is your highlight of the day"
-            textView.textColor = UIColor.lightGray
-        }
-        
-        if textView == memoTextView {
-            let offset = CGPoint(x:0, y:0)
-            scrollView.setContentOffset(offset, animated: true)
-        }
-    }
-    
-    //    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    //
-    //        return false
-    //    }
 }

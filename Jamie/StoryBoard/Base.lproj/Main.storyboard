@@ -64,13 +64,13 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12월 20일 수요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58M-3H-qUB">
-                                        <rect key="frame" x="133" y="27" width="109" height="28"/>
+                                        <rect key="frame" x="133.5" y="27" width="108.5" height="28"/>
                                         <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previous-date-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-g0-Hkv">
-                                        <rect key="frame" x="97" y="29" width="24" height="24"/>
+                                        <rect key="frame" x="97.5" y="29" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="2kA-zh-ag9"/>
                                             <constraint firstAttribute="width" constant="24" id="Wtp-EH-usl"/>
@@ -107,10 +107,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6Y-WR-xsS" userLabel="TextView">
                                                 <rect key="frame" x="0.0" y="20" width="375" height="250"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highlight-memo-bg" translatesAutoresizingMaskIntoConstraints="NO" id="zRs-1P-SaD">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="highlight-memo-bg" translatesAutoresizingMaskIntoConstraints="NO" id="zRs-1P-SaD">
                                                         <rect key="frame" x="10" y="17" width="355" height="211"/>
                                                     </imageView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="631-m8-IKN">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="631-m8-IKN">
                                                         <rect key="frame" x="50" y="55.5" width="275" height="128"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="128" id="sj7-Pl-nhb"/>
@@ -321,6 +321,7 @@
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="bottomMenuView" destination="sqi-Tw-qTi" id="C72-V9-YKk"/>
+                        <outlet property="dateLabel" destination="58M-3H-qUB" id="RVR-CV-Cyd"/>
                         <outlet property="doButton" destination="luv-kQ-c2p" id="g0Q-w7-Tg0"/>
                         <outlet property="doImageView" destination="w4M-eC-xHM" id="xpG-kU-GKd"/>
                         <outlet property="evaluableView" destination="T8L-Br-Bsd" id="RMm-xU-wku"/>
@@ -495,7 +496,7 @@
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oe-og-3eA">
-                                <rect key="frame" x="90.5" y="421" width="233" height="64.5"/>
+                                <rect key="frame" x="26" y="420.5" width="362" height="65.5"/>
                                 <string key="text">하이라이트 목록이 비어있네요
 오늘의 하이라이트를 남겨보세요!</string>
                                 <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="28"/>
