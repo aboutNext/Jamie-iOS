@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum evaluationState: String {
+    case none = "none"
+    case success = "success"
+    case fail = "fail"
+}
+
 class ListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateImageView: UIImageView!
@@ -20,7 +26,25 @@ class ListTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-
+        
+    }
+    
+    //TODO: Enum으로 분리
+    func showStatusLabel(status: String) {
+        guard let statusType = evaluationState(rawValue: status) else {
+            return
+        }
+        
+        switch statusType {
+        case .none:
+            dateImageView.isHidden = true
+        case .success:
+            dateImageView.isHidden = false
+            dateImageView.image = UIImage(named: "text-highlight-yellow")
+        case .fail:
+            dateImageView.isHidden = false
+            dateImageView.image = UIImage(named: "text-highlight-green")
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

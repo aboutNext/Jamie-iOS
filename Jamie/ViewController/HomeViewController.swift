@@ -38,6 +38,8 @@ class HomeViewController: UIViewController {
     //BottomTapView
     @IBOutlet weak var bottomMenuView: UIView!
     
+    var contents = [Highlight]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

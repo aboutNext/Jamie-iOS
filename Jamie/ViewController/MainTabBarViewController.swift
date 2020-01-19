@@ -17,9 +17,9 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet var buttons: [UIButton]!
-    var homeViewController : UIViewController!
-    var listViewController: UIViewController!
-    var settingViewController: UIViewController!
+    var homeViewController : HomeViewController!
+    var listViewController: ListViewController!
+    var settingViewController: SettingViewController!
     var viewControllers: [UIViewController]!
     var selectedIndex: Int = 0
     var movingView = UIView()
@@ -31,20 +31,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-        listViewController = storyboard.instantiateViewController(withIdentifier: "ListViewController")
-        settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController")
-        
-        
-        viewControllers = [homeViewController, listViewController, settingViewController]
-        
-        buttons[selectedIndex].isSelected = true
-        didPressTab(buttons[selectedIndex])
-        
-        
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +41,6 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         GIDSignIn.sharedInstance()?.restorePreviousSignIn();
         
 //        showHighlightOfToday()
-        
     }
     
     deinit {
@@ -68,14 +54,17 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
     //        GIDSignIn.sharedInstance()?.presentingViewController = self
     //    }
     
-    
+
+
     private func getContentsData() {
         let firebaseHandle = FirebaseAPI()
         firebaseHandle.getContentsData { highlights in
             self.contents.append(highlights)
             //            self.contents = highlights
-            print(self.contents)
-            
+//            print(self.contents)
+            //TODO : 구조 다시 고려해야함
+            self.homeViewController.contents.append(highlights)
+            self.listViewController.contents.append(highlights)
         }
     }
     
@@ -132,7 +121,19 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         }
     }
 
-    
+    private func setupViews() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+        listViewController = storyboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController
+        settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController
+        
+        viewControllers = [homeViewController, listViewController, settingViewController]
+        buttons[selectedIndex].isSelected = true
+        didPressTab(buttons[selectedIndex])
+    }
+}
+
+extension MainTabBarViewController {
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {

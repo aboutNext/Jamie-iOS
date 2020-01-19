@@ -27,15 +27,14 @@
                             <constraint firstAttribute="height" constant="45" id="nJk-ih-30v"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqc-PZ-1xQ">
-                        <rect key="frame" x="24" y="7" width="40.5" height="32.5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqc-PZ-1xQ">
+                        <rect key="frame" x="24" y="7" width="228" height="0.0"/>
                         <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="28"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrF-Oy-mJr">
-                        <rect key="frame" x="24" y="43.5" width="40.5" height="32.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrF-Oy-mJr">
+                        <rect key="frame" x="24" y="76" width="242.5" height="0.0"/>
                         <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="28"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -49,11 +48,15 @@
                         <state key="normal" image="to-highlight-detail"/>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="0.8883075118" green="0.87711983920000003" blue="0.85031670329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="yrF-Oy-mJr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="44W-UV-0GD"/>
+                    <constraint firstItem="MfY-27-Iue" firstAttribute="leading" secondItem="Jqc-PZ-1xQ" secondAttribute="trailing" constant="24.5" id="6ta-2u-tjB"/>
+                    <constraint firstItem="MfY-27-Iue" firstAttribute="leading" secondItem="yrF-Oy-mJr" secondAttribute="trailing" constant="10" id="8VA-MD-eKL"/>
+                    <constraint firstItem="Jqc-PZ-1xQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="DyP-Wd-hqa"/>
                     <constraint firstItem="uGp-NO-y5x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Fqc-mN-0M8"/>
                     <constraint firstItem="uGp-NO-y5x" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Sm7-AS-VwD"/>
+                    <constraint firstItem="Jqc-PZ-1xQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="TlX-Gu-bBn"/>
                     <constraint firstAttribute="trailing" secondItem="MfY-27-Iue" secondAttribute="trailing" constant="26.5" id="jBt-Jm-lpH"/>
                     <constraint firstItem="MfY-27-Iue" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kAD-aZ-5RB"/>
                     <constraint firstAttribute="bottom" secondItem="yrF-Oy-mJr" secondAttribute="bottom" constant="14" id="wqL-bl-3qC"/>

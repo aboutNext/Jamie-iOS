@@ -22,7 +22,7 @@ class SettingViewController: UIViewController {
         tableView.register(nibName, forCellReuseIdentifier: "SettingTableViewCell")
         self.view.addSubview(tableView)
         
-        self.tableView.backgroundColor = UIColor(red: 241, green: 238, blue: 231, alpha: 1.0) //Colors.backgroundGray
+        self.tableView.backgroundColor = Colors.backgroundGray
         
     }
 }
@@ -34,7 +34,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.red
+        headerView.backgroundColor = Colors.backgroundGray
         return headerView
     }
     
@@ -48,10 +48,11 @@ extension SettingViewController: UITableViewDataSource {
         
         let row = indexPath.row
         if row == 0 {
-            cell.settingTitle.text = "버전정보"
-
+            cell.titleLabel.text = "버전정보"
+            cell.detailLabel.text = "v 1.0.0"
         } else {
-            cell.settingTitle.text = "로그아웃 하기"
+            cell.titleLabel.text = "로그아웃 하기"
+            cell.detailLabel.isHidden = true
         }
         return cell
     }
@@ -59,6 +60,8 @@ extension SettingViewController: UITableViewDataSource {
 
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
     }
 }
 

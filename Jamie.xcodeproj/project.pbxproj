@@ -34,6 +34,8 @@
 		FB123A5523C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB123A5423C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf */; };
 		FB123A5923C212D100B89C29 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB123A5823C212D100B89C29 /* Colors.swift */; };
 		FB3D022F23A3EF32006A7CA0 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D022E23A3EF32006A7CA0 /* Member.swift */; };
+		FBA6E7AD23D4A43E00A8EFC4 /* ListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA6E7AC23D4A43E00A8EFC4 /* ListTableHeaderView.swift */; };
+		FBA6E7AF23D4A44E00A8EFC4 /* ListTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA6E7AE23D4A44E00A8EFC4 /* ListTableHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		FB123A5423C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 왼손잡이도 예뻐.ttf"; sourceTree = "<group>"; };
 		FB123A5823C212D100B89C29 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FB3D022E23A3EF32006A7CA0 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		FBA6E7AC23D4A43E00A8EFC4 /* ListTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableHeaderView.swift; sourceTree = "<group>"; };
+		FBA6E7AE23D4A44E00A8EFC4 /* ListTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 			children = (
 				18DA5D0A238623EE007DB93E /* ListTableViewCell.swift */,
 				18DA5D08238623EA007DB93E /* ListTableViewCell.xib */,
+				FBA6E7AC23D4A43E00A8EFC4 /* ListTableHeaderView.swift */,
+				FBA6E7AE23D4A44E00A8EFC4 /* ListTableHeaderView.xib */,
 				1871DC3223862D2D00757B60 /* SettingTableViewCell.swift */,
 				1871DC3123862D2D00757B60 /* SettingTableViewCell.xib */,
 				180EC318238D2A5F00C97221 /* CustomNavigationView.swift */,
@@ -274,6 +280,7 @@
 				1871DC3323862D2D00757B60 /* SettingTableViewCell.xib in Resources */,
 				185C0357238F9CFF0077D2E9 /* CustomTabBarButtonView.xib in Resources */,
 				180EC31B238D2A6A00C97221 /* CustomNavigationView.xib in Resources */,
+				FBA6E7AF23D4A44E00A8EFC4 /* ListTableHeaderView.xib in Resources */,
 				1887588523850BE400C8F7EC /* Assets.xcassets in Resources */,
 				1887588323850BE400C8F7EC /* Main.storyboard in Resources */,
 				FB123A5523C2104300B89C29 /* 나눔손글씨 왼손잡이도 예뻐.ttf in Resources */,
@@ -348,6 +355,7 @@
 			files = (
 				1860E33523A391FD005107BB /* LoginViewController.swift in Sources */,
 				188758932385104500C8F7EC /* SettingViewController.swift in Sources */,
+				FBA6E7AD23D4A43E00A8EFC4 /* ListTableHeaderView.swift in Sources */,
 				18DA5D0B238623EE007DB93E /* ListTableViewCell.swift in Sources */,
 				FB123A5923C212D100B89C29 /* Colors.swift in Sources */,
 				1887587C23850BE400C8F7EC /* AppDelegate.swift in Sources */,

@@ -10,14 +10,16 @@ import UIKit
 
 class SettingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var settingTitle: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
     }
     
     private func setupUI() {
-        
+    
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
