@@ -53,7 +53,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn();
         
-        //        showHighlightOfToday()
+//        showHighlightOfToday()
         
     }
     
@@ -69,7 +69,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
     //    }
     
     
-    private func showHighlightOfToday() {
+    private func getContentsData() {
         let firebaseHandle = FirebaseAPI()
         firebaseHandle.getContentsData { highlights in
             self.contents.append(highlights)
@@ -104,6 +104,35 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
     }
     
     
+    func showLoginGuide() {
+        firebaseAPIControllerHandle = FirebaseAPI()
+        guard let firebaseHandle = firebaseAPIControllerHandle else { return }
+        
+        firebaseHandle.checkLoginStatus { (result) in
+            if result {
+                //membership 조회
+                
+//                data 조회
+                
+                self.getContentsData()
+
+//                                firebaseHandle.getContentsData { Highlights in
+//                                    self.contents = Highlights
+//                                }
+                return
+            } else {
+                
+                //membership 없으면 생성
+//                firebaseHandle.joinMembership()
+                
+                //or 로그인 화면 연결
+                let vc = self.switchToLoginPage()
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+
+    
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
@@ -122,7 +151,6 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         if let error = error {
             print(error.localizedDescription)
             print("로그인 정보 없음")
-            
             return
         }
         
@@ -142,8 +170,8 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
                     print(error.localizedDescription)
                 } else {
                     print("Login Successful.")
-                    
-                    
+                    self.showLoginGuide()
+
                 }
             }
         }

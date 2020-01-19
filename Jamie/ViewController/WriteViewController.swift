@@ -46,22 +46,45 @@ class WriteViewController: UIViewController {
     }
     
     @objc func touchUpDismissView(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        showAlert(style: .alert)
     }
     
     @objc func touchUpDoneButton(_ sender: UIButton) {
+        if textView.text == "What is your highlight of the day" {
+            print("저장할 내용이 없습니다")
+            return
+        }
+        
         let firebaseHandle = FirebaseAPI()
-        
+        //TODO: 저장 시도하는 동안 버튼 비활성화
+
         //isUpdatedMode
-        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text)
-        
-        
-        
+        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text) { result in
+            if result {
+                self.dismissKeyboard()
+                self.dismiss(animated: true, completion: nil)
+
+            } else {
+                //저장되었다고 토스트로 알리고 닫힘
+            }
+        }
     }
     
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    private func showAlert(style: UIAlertController.Style) {
+        let alert = UIAlertController(title: "정말 취소할까요?", message: "내용은 저장되지 않습니다", preferredStyle: style)
+        let success = UIAlertAction(title: "확인", style: .cancel) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+        let cancel = UIAlertAction(title: "취소", style: .default, handler: nil)
+        
+        alert.addAction(success)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

@@ -44,11 +44,16 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     private func setupUI() {
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        tap.delegate = self as? UIGestureRecognizerDelegate
-        view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//        tap.delegate = self as? UIGestureRecognizerDelegate
+//        view.addGestureRecognizer(tap)
         
         doButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
@@ -58,10 +63,11 @@ class HomeViewController: UIViewController {
         highlightTextView.textColor = UIColor.lightGray
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
-
         highlightTextView.addGestureRecognizer(tapRecognizer)
 
-       
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
+        memoTextView.addGestureRecognizer(tap)
+
         //evaluationView
         showEvaluableView(isEvaluabled: true)
     }
@@ -96,12 +102,14 @@ class HomeViewController: UIViewController {
         undoImageView.isHidden = false
     }
     
-    private func bottomMenuTap(_ sender: UIButton) {
-        
-    }
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    func getContents() {
+        let firebaseHandle = FirebaseAPI()
+
+        
     }
     
     func showModal() {

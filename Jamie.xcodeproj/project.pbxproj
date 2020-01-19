@@ -130,7 +130,7 @@
 			children = (
 				1887589B238510F200C8F7EC /* Model */,
 				188758982385109800C8F7EC /* ViewController */,
-				188758912385102F00C8F7EC /* view */,
+				188758912385102F00C8F7EC /* View */,
 				18263E4723911135004018A4 /* Util */,
 				1860E33623A39223005107BB /* Firebase */,
 				1887589C238510FD00C8F7EC /* StoryBoard */,
@@ -145,7 +145,7 @@
 			path = Jamie;
 			sourceTree = "<group>";
 		};
-		188758912385102F00C8F7EC /* view */ = {
+		188758912385102F00C8F7EC /* View */ = {
 			isa = PBXGroup;
 			children = (
 				18DA5D0A238623EE007DB93E /* ListTableViewCell.swift */,
@@ -157,7 +157,7 @@
 				185C0356238F9CFF0077D2E9 /* CustomTabBarButtonView.xib */,
 				185C0358238F9D180077D2E9 /* CustomTabBarButtonView.swift */,
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
 		188758982385109800C8F7EC /* ViewController */ = {

@@ -88,7 +88,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
 //            self.contents = highlights
 //            print(self.contents)
         }
-//
     }
     
     @available(iOS 9.0, *)

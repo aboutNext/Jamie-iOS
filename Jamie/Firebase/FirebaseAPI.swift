@@ -129,11 +129,11 @@ extension FirebaseAPI {
         return true
     }
     
-
-    func addNewHighlightAtDocument(collectionName: String, content: String) {
+    func addNewHighlightAtDocument(collectionName: String, content: String, completion: @escaping(_ result: Bool) -> Void) {
         checkUserExistence { userId in
             guard let userId = userId else {
                 print("no userId")
+                completion(false)
                 return
             }
             
@@ -147,8 +147,10 @@ extension FirebaseAPI {
             db.collection(collectionName).document().setData(data) { error in
                 if let error = error {
                     print("Error writing document: \(error)")
+                    completion(false)
                 } else {
                     print("Document successfully written!")
+                    completion(true)
                 }
             }
         }
