@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Highlight : Codable {
+struct Highlight: Codable {
     var uid: String?
     var createdDate: Date?
     var updatedDate: Date?
@@ -18,3 +18,10 @@ struct Highlight : Codable {
     var status: String?
 }
 
+
+struct Content {
+    var targetDate: Date?
+    var highlight: String?
+    var memo: String?
+    var status: String?
+}

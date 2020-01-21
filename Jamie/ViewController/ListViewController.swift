@@ -12,7 +12,7 @@ class ListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyNoticeLabel: UILabel!
-    var contents = [Highlight]()
+    var highlights = [Highlight]()
 
     
     override func viewDidLoad() {
@@ -44,13 +44,14 @@ extension ListViewController: UITableViewDelegate {
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contents.count
+        return highlights.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ListTableHeaderView") as! ListTableHeaderView
 //        headerView.dateLabel.text = "Date test"
+//        headerView.contentView.backgroundColor = Colors.backgroundGray
         return headerView
     }
 
@@ -61,13 +62,13 @@ extension ListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        let data = contents[indexPath.row]
+        let data = highlights[indexPath.row]
         
         if data.updatedDate != nil {
             let formatter = DateFormatter()
             //TODO : 한국에만 아래 해당 (eng: EE - Tue 로)
             formatter.locale = Locale(identifier:"ko_KR")
-            formatter.dateFormat = "MMM DD EEEE"
+            formatter.dateFormat = "MM DD EEEE"
             let dateString =  formatter.string(from: data.updatedDate!)
             cell.dateLabel.text = dateString
         }

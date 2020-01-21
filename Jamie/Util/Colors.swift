@@ -22,5 +22,5 @@ class Colors: UIColor {
     
     //241,238,231 #lightGrey
     static let backgroundGray = Colors.init(red: 241, green: 238, blue: 231)
-
+    static let playholderGray = Colors.init(red: 135, green: 135, blue: 135)
 }

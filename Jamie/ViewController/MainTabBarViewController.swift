@@ -63,8 +63,8 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
             //            self.contents = highlights
 //            print(self.contents)
             //TODO : 구조 다시 고려해야함
-            self.homeViewController.contents.append(highlights)
-            self.listViewController.contents.append(highlights)
+            self.homeViewController.highlights.append(highlights)
+            self.listViewController.highlights.append(highlights)
         }
     }
     

@@ -9,9 +9,9 @@
 import UIKit
 
 class ListTableHeaderView: UITableViewHeaderFooterView {
-//    @IBOutlet weak var dataLabel: UILabel!
-//    
+    @IBOutlet weak var dataLabel: UILabel!
+    
     override func awakeFromNib() {
-        
+
     }
 }

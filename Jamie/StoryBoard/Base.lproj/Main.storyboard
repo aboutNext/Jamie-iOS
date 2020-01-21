@@ -64,20 +64,20 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12월 20일 수요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58M-3H-qUB">
-                                        <rect key="frame" x="133.5" y="27" width="108.5" height="28"/>
+                                        <rect key="frame" x="133.5" y="25" width="108.5" height="28"/>
                                         <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previous-date-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-g0-Hkv">
-                                        <rect key="frame" x="97.5" y="29" width="24" height="24"/>
+                                        <rect key="frame" x="97.5" y="27" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="2kA-zh-ag9"/>
                                             <constraint firstAttribute="width" constant="24" id="Wtp-EH-usl"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next-date-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="gi5-Lw-2QD">
-                                        <rect key="frame" x="254" y="29" width="24" height="24"/>
+                                        <rect key="frame" x="254" y="27" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="cou-Ef-Kyn"/>
                                             <constraint firstAttribute="width" constant="24" id="fOT-XO-3Xa"/>
@@ -93,7 +93,7 @@
                                     <constraint firstItem="gi5-Lw-2QD" firstAttribute="leading" secondItem="58M-3H-qUB" secondAttribute="trailing" constant="12" id="QwX-FQ-ldC"/>
                                     <constraint firstItem="58M-3H-qUB" firstAttribute="centerX" secondItem="n8n-hL-nAn" secondAttribute="centerX" id="Ugf-QM-r30"/>
                                     <constraint firstItem="58M-3H-qUB" firstAttribute="leading" secondItem="4JH-g0-Hkv" secondAttribute="trailing" constant="12" id="hFS-BY-Jka"/>
-                                    <constraint firstItem="58M-3H-qUB" firstAttribute="top" secondItem="n8n-hL-nAn" secondAttribute="top" constant="27" id="oTc-gf-E3U"/>
+                                    <constraint firstItem="58M-3H-qUB" firstAttribute="top" secondItem="n8n-hL-nAn" secondAttribute="top" constant="25" id="oTc-gf-E3U"/>
                                     <constraint firstItem="gi5-Lw-2QD" firstAttribute="centerY" secondItem="58M-3H-qUB" secondAttribute="centerY" id="tbA-ec-0y9"/>
                                     <constraint firstAttribute="height" constant="56" id="zKt-Jk-v8t"/>
                                 </constraints>
@@ -111,12 +111,12 @@
                                                         <rect key="frame" x="10" y="17" width="355" height="211"/>
                                                     </imageView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="631-m8-IKN">
-                                                        <rect key="frame" x="50" y="55.5" width="275" height="128"/>
+                                                        <rect key="frame" x="50" y="55.5" width="275" height="134"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="128" id="sj7-Pl-nhb"/>
+                                                            <constraint firstAttribute="height" constant="134" id="sj7-Pl-nhb"/>
                                                         </constraints>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="R1s-7l-Pie" id="ps5-IO-TrG"/>
@@ -219,26 +219,26 @@
                                                 <rect key="frame" x="0.0" y="389" width="375" height="250"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highlight-memo-bg" translatesAutoresizingMaskIntoConstraints="NO" id="mGX-FH-we5">
-                                                        <rect key="frame" x="10" y="10" width="355" height="190"/>
+                                                        <rect key="frame" x="10" y="10" width="355" height="211"/>
                                                     </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEMO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d2-Mt-12W">
+                                                        <rect key="frame" x="165.5" y="24" width="44" height="28"/>
+                                                        <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cxB-E8-Tqg">
-                                                        <rect key="frame" x="20" y="79" width="335" height="100"/>
+                                                        <rect key="frame" x="50" y="52" width="274" height="134"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="bNy-LD-VYc"/>
+                                                            <constraint firstAttribute="height" constant="134" id="bNy-LD-VYc"/>
                                                         </constraints>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="R1s-7l-Pie" id="Sa7-DJ-yc9"/>
                                                         </connections>
                                                     </textView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEMO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d2-Mt-12W">
-                                                        <rect key="frame" x="162" y="50" width="51.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highlight-memo-pin-left" translatesAutoresizingMaskIntoConstraints="NO" id="ZIr-mm-6oP">
                                                         <rect key="frame" x="20" y="10" width="30" height="30"/>
                                                         <constraints>
@@ -255,20 +255,19 @@
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="cxB-E8-Tqg" firstAttribute="top" secondItem="7d2-Mt-12W" secondAttribute="bottom" constant="8.5" id="0Lb-F6-3oD"/>
                                                     <constraint firstItem="ZIr-mm-6oP" firstAttribute="leading" secondItem="zNh-m0-wzh" secondAttribute="leading" constant="20" id="5Kf-Jk-mmk"/>
-                                                    <constraint firstAttribute="bottom" secondItem="mGX-FH-we5" secondAttribute="bottom" constant="50" id="6iB-wJ-iVJ"/>
                                                     <constraint firstAttribute="trailing" secondItem="Lpp-3c-Xp5" secondAttribute="trailing" constant="20" id="7f4-RF-65B"/>
                                                     <constraint firstItem="mGX-FH-we5" firstAttribute="top" secondItem="zNh-m0-wzh" secondAttribute="top" constant="10" id="8S0-wQ-YX7"/>
                                                     <constraint firstItem="Lpp-3c-Xp5" firstAttribute="top" secondItem="zNh-m0-wzh" secondAttribute="top" constant="10" id="8dq-s1-iVV"/>
-                                                    <constraint firstItem="7d2-Mt-12W" firstAttribute="top" secondItem="ZIr-mm-6oP" secondAttribute="bottom" constant="10" id="Bfw-6a-8qh"/>
+                                                    <constraint firstItem="cxB-E8-Tqg" firstAttribute="top" secondItem="7d2-Mt-12W" secondAttribute="bottom" id="DbW-pt-qxe"/>
                                                     <constraint firstAttribute="trailing" secondItem="mGX-FH-we5" secondAttribute="trailing" constant="10" id="IjA-Xg-COG"/>
                                                     <constraint firstItem="mGX-FH-we5" firstAttribute="leading" secondItem="zNh-m0-wzh" secondAttribute="leading" constant="10" id="MRM-xv-nlU"/>
+                                                    <constraint firstItem="cxB-E8-Tqg" firstAttribute="leading" secondItem="mGX-FH-we5" secondAttribute="leading" constant="40" id="STP-9q-BMy"/>
                                                     <constraint firstAttribute="height" constant="250" id="UpK-Cw-9k5"/>
                                                     <constraint firstItem="7d2-Mt-12W" firstAttribute="centerX" secondItem="zNh-m0-wzh" secondAttribute="centerX" id="d8F-Th-paT"/>
                                                     <constraint firstItem="ZIr-mm-6oP" firstAttribute="top" secondItem="zNh-m0-wzh" secondAttribute="top" constant="10" id="eY6-7p-6ri"/>
-                                                    <constraint firstItem="cxB-E8-Tqg" firstAttribute="leading" secondItem="zNh-m0-wzh" secondAttribute="leading" constant="20" id="fnv-tX-W0S"/>
-                                                    <constraint firstAttribute="trailing" secondItem="cxB-E8-Tqg" secondAttribute="trailing" constant="20" id="hng-Vq-dB9"/>
+                                                    <constraint firstItem="cxB-E8-Tqg" firstAttribute="trailing" secondItem="mGX-FH-we5" secondAttribute="trailing" constant="-41" id="nbW-dK-CAB"/>
+                                                    <constraint firstItem="7d2-Mt-12W" firstAttribute="top" secondItem="zNh-m0-wzh" secondAttribute="top" constant="24" id="x3X-Cc-O2D"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -404,7 +403,7 @@
                                             <constraint firstAttribute="height" constant="134" id="WUj-rj-Zfw"/>
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="28"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="jxq-Qe-Vie" id="LcQ-7U-NUx"/>

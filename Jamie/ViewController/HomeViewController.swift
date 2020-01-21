@@ -14,7 +14,7 @@ enum MainTab: Int {
     case setting
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, writeViewControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -38,25 +38,24 @@ class HomeViewController: UIViewController {
     //BottomTapView
     @IBOutlet weak var bottomMenuView: UIView!
     
-    var contents = [Highlight]()
+    var highlights = [Highlight]()
+    var content: Content?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //TODO: 오늘 날짜 확인해서 없으면 새로 생성하도록 변경
+        content = Content.init(targetDate: Date(), highlight: nil, memo: nil, status: nil)
         setupUI()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setDataToTextView()
     }
     
     private func setupUI() {
-        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-//        tap.delegate = self as? UIGestureRecognizerDelegate
-//        view.addGestureRecognizer(tap)
-        
+        //buttons
         doButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         
@@ -66,61 +65,125 @@ class HomeViewController: UIViewController {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
         highlightTextView.addGestureRecognizer(tapRecognizer)
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tappedMemoView))
         memoTextView.addGestureRecognizer(tap)
-
+        
         //evaluationView
-        showEvaluableView(isEvaluabled: true)
+        showEvaluableView(isEvaluabled: false)
+        
+ 
     }
     
     @objc func tappedTextView(tapGesture:
         UIGestureRecognizer) {
-        showModal()
+        showModal(isFeedbackMemo: false)
     }
+
+    @objc func tappedMemoView(tapGesture:
+           UIGestureRecognizer) {
+           showModal(isFeedbackMemo: true)
+       }
     
-    private func showEvaluableView(isEvaluabled : Bool) {
+    func showEvaluableView(isEvaluabled : Bool) {
         if isEvaluabled {
             mainCharacterView.isHidden = true
+            evaluationImageView.isHidden = false
             doButton.isHidden = false
+            doImageView.isHidden = true
             undoButton.isHidden = false
+            undoImageView.isHidden = true
             return
         }
         mainCharacterView.isHidden = false
+        evaluationImageView.isHidden = true
         doButton.isHidden = true
+        doImageView.isHidden = true
         undoButton.isHidden = true
+        undoImageView.isHidden = true
+    }
+    
+    //Delegate
+    func showWrittenContent(data: Content) {
+//        guard let newData = data else {
+//            showEvaluableView(isEvaluabled: false)
+//            return
+//        }
+        guard var newContent = content else {
+            return
+        }
+        
+        newContent = data
+
+        showEvaluableView(isEvaluabled: true)
+        highlightTextView.text = newContent.highlight
+        memoTextView.text = newContent.memo
+        
+        //TODO : date 따로 정리
+        guard let date = newContent.targetDate else { return }
+        let dateString = chageDateToString(date)
+        dateLabel.text = dateString
+
+        if newContent.status != "none" {
+
+        }
+    }
+    
+    //TODO: text nil check
+    private func setDataToTextView() {
+        
+        //date
+        guard let newContent = content, let date = newContent.targetDate else { return }
+        dateLabel.text = chageDateToString(date)
+        
+        //textView
+        highlightTextView.text = newContent.highlight
+        memoTextView.text = newContent.memo
     }
     
     
+    private func showFeedBack(isSuccess: Bool) {
+        if isSuccess {
+            
+        }
+    }
+    
+    func chageDateToString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        //TODO : 한국에만 아래 해당 (eng: EE - Tue 로)
+        formatter.locale = Locale(identifier:"ko_KR")
+        formatter.dateFormat = "MM DD EEEE"
+        let dateString =  formatter.string(from: date)
+        return dateString
+    }
+    
     @objc func evaluableButtonTouched(_ sender: UIButton) {
+        guard var data = content else { return }
+        
         if sender === doButton {
             evaluationImageView.image = UIImage(named: "character-done")!
             doImageView.isHidden = false
             undoImageView.isHidden = true
+            data.status = evaluationState.success.rawValue
             return
         }
         evaluationImageView.image = UIImage(named: "character-fail")!
         doImageView.isHidden = true
         undoImageView.isHidden = false
+        data.status = evaluationState.fail.rawValue
     }
-    
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-    
-    func getContents() {
-        let firebaseHandle = FirebaseAPI()
-
-        
-    }
-    
-    func showModal() {
+   
+    func showModal(isFeedbackMemo: Bool) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let writeVC = storyboard.instantiateViewController(withIdentifier: "WriteViewController")
+        let writeVC = storyboard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
         writeVC.modalPresentationStyle = .overCurrentContext
-        present(writeVC, animated: true, completion: nil)
+        writeVC.delegate = self
         
+        guard let data = content else { return }
+        writeVC.content = content
+        writeVC.isFeedbackMemo = isFeedbackMemo
+        present(writeVC, animated: true, completion: nil)
         
     }
 }

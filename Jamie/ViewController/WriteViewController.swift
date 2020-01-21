@@ -13,6 +13,11 @@ import GoogleSignIn
 import FirebaseDatabase
 import FirebaseFirestore
 
+protocol writeViewControllerDelegate {
+    func showWrittenContent(data: Content)
+
+}
+
 class WriteViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
@@ -21,9 +26,12 @@ class WriteViewController: UIViewController {
     
     var docRef: DatabaseReference!
     var firebaseAPIControllerHandle: FirebaseAPI?
-    var contents = [Highlight]()
+    var delegate: writeViewControllerDelegate?
+    var content: Content?
+    var highlight = [Highlight]()
     var uid: String?
     var isUpdatedMode: Bool = false
+    var isFeedbackMemo: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +39,30 @@ class WriteViewController: UIViewController {
     }
     
     private func setupUI() {
-        //text view
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        textView.textContainer.lineBreakMode = .byCharWrapping
-        textView.text = "What is your highlight of the day"
-        textView.textColor = UIColor.lightGray
-        
         dismissButton.addTarget(self, action: #selector(touchUpDismissView), for: .touchUpInside)
         updateDoneButton.addTarget(self, action: #selector(touchUpDoneButton), for: .touchUpInside)
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         tap.delegate = self as? UIGestureRecognizerDelegate
         view.addGestureRecognizer(tap)
+        
+        //text view
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        textView.textContainer.lineBreakMode = .byCharWrapping
+        textView.textColor = Colors.playholderGray
+        
+        guard let data = content else { return }
+        if data.highlight == nil {
+            //TODO : 1. 메모와 하이라이트 텍스트 문구 다르게 변경 2. 번역어 - What is your highlight of the day
+            textView.text = "오늘 하이라이트 어땠어요?"
+            return
+        }
+        
+        if isFeedbackMemo && data.memo != nil {
+            textView.text = data.memo
+        } else if data.highlight != nil {
+            textView.text = data.highlight
+        }
     }
     
     @objc func touchUpDismissView(_ sender: UIButton) {
@@ -50,24 +70,34 @@ class WriteViewController: UIViewController {
     }
     
     @objc func touchUpDoneButton(_ sender: UIButton) {
-        if textView.text == "What is your highlight of the day" {
-            print("저장할 내용이 없습니다")
-            return
+        
+        guard var newContent = content else { return }
+//        let content = Content.init(targetDate: nil, highlight: textView.text, memo: nil, status: nil)
+        if !isFeedbackMemo {
+            newContent.highlight = textView.text
+        } else {
+            newContent.memo = textView.text
         }
         
-        let firebaseHandle = FirebaseAPI()
-        //TODO: 저장 시도하는 동안 버튼 비활성화
-
-        //isUpdatedMode
-        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text) { result in
-            if result {
+        delegate?.showWrittenContent(data: newContent)
+//        if textView.text == "오늘 하이라이트 어땠어요?" {
+//            print("저장할 내용이 없습니다")
+//            return
+//        }
+//
+//        let firebaseHandle = FirebaseAPI()
+//        //TODO: 저장 시도하는 동안 버튼 비활성화
+//
+//        //isUpdatedMode
+//        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text) { result in
+//            if result {
                 self.dismissKeyboard()
                 self.dismiss(animated: true, completion: nil)
-
-            } else {
-                //저장되었다고 토스트로 알리고 닫힘
-            }
-        }
+//
+//            } else {
+//                //저장되었다고 토스트로 알리고 닫힘
+//            }
+//        }
     }
     
     
@@ -94,7 +124,7 @@ extension WriteViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("시작")
         
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == Colors.playholderGray {
             textView.text = ""
             textView.textColor = UIColor.black
         }
@@ -104,8 +134,8 @@ extension WriteViewController: UITextViewDelegate {
         print("끝")
         
         if textView.text.isEmpty {
-            textView.text = "What is your highlight of the day"
-            textView.textColor = UIColor.lightGray
+            textView.text = "오늘 하이라이트 어땠어요?"
+            textView.textColor = Colors.playholderGray
         }
     }
 }
