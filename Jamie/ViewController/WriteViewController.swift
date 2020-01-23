@@ -54,13 +54,13 @@ class WriteViewController: UIViewController {
         guard let data = content else { return }
         if data.highlight == nil {
             //TODO : 1. 메모와 하이라이트 텍스트 문구 다르게 변경 2. 번역어 - What is your highlight of the day
-            textView.text = "오늘 하이라이트 어땠어요?"
+            textView.text = Constant.highlightTextViewPlaceHolder
             return
         }
         
-        if isFeedbackMemo && data.memo != nil {
+        if isFeedbackMemo {
             textView.text = data.memo
-        } else if data.highlight != nil {
+        } else {
             textView.text = data.highlight
         }
     }
@@ -106,11 +106,11 @@ class WriteViewController: UIViewController {
     }
     
     private func showAlert(style: UIAlertController.Style) {
-        let alert = UIAlertController(title: "정말 취소할까요?", message: "내용은 저장되지 않습니다", preferredStyle: style)
-        let success = UIAlertAction(title: "확인", style: .cancel) { (action) in
+        let alert = UIAlertController(title: Constant.writeViewAlertTitle, message: Constant.writeViewAlertMessage, preferredStyle: style)
+        let success = UIAlertAction(title: Constant.writeViewConfirm, style: .cancel) { (action) in
                 self.dismiss(animated: true, completion: nil)
             }
-        let cancel = UIAlertAction(title: "취소", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: Constant.writeViewCancel, style: .default, handler: nil)
         
         alert.addAction(success)
         alert.addAction(cancel)
@@ -122,19 +122,17 @@ class WriteViewController: UIViewController {
 extension WriteViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print("시작")
-        
         if textView.textColor == Colors.playholderGray {
-            textView.text = ""
+            if textView.text == Constant.highlightTextViewPlaceHolder {
+                textView.text = ""
+            }
             textView.textColor = UIColor.black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        print("끝")
-        
         if textView.text.isEmpty {
-            textView.text = "오늘 하이라이트 어땠어요?"
+            textView.text = Constant.highlightTextViewPlaceHolder
             textView.textColor = Colors.playholderGray
         }
     }

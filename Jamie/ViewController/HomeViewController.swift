@@ -51,7 +51,6 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setDataToTextView()
     }
     
     private func setupUI() {
@@ -60,8 +59,8 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         
         //textView
-        highlightTextView.text = "What is your highlight of the day"
-        highlightTextView.textColor = UIColor.lightGray
+        highlightTextView.text = Constant.highlightTextViewPlaceHolder
+        highlightTextView.textColor = Colors.playholderGray
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
         highlightTextView.addGestureRecognizer(tapRecognizer)
@@ -70,9 +69,11 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         memoTextView.addGestureRecognizer(tap)
         
         //evaluationView
-        showEvaluableView(isEvaluabled: false)
+        showEvaluableViews(isEvaluabled: false)
         
- 
+        //memoTextView
+        memoTextView.text = Constant.memoTextViewPlaceHolder
+        memoTextView.textColor = Colors.playholderGray
     }
     
     @objc func tappedTextView(tapGesture:
@@ -85,7 +86,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
            showModal(isFeedbackMemo: true)
        }
     
-    func showEvaluableView(isEvaluabled : Bool) {
+    func showEvaluableViews(isEvaluabled : Bool) {
         if isEvaluabled {
             mainCharacterView.isHidden = true
             evaluationImageView.isHidden = false
@@ -105,48 +106,55 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     
     //Delegate
     func showWrittenContent(data: Content) {
-//        guard let newData = data else {
-//            showEvaluableView(isEvaluabled: false)
-//            return
-//        }
         guard var newContent = content else {
             return
         }
         
         newContent = data
-
-        showEvaluableView(isEvaluabled: true)
-        highlightTextView.text = newContent.highlight
-        memoTextView.text = newContent.memo
-        
+        content = data
+     
         //TODO : date 따로 정리
         guard let date = newContent.targetDate else { return }
         let dateString = chageDateToString(date)
         dateLabel.text = dateString
 
-        if newContent.status != "none" {
-
+        setDataToTextView()
+        showEvaluableViews(isEvaluabled: true)
+        showFeedback()
+        
+    }
+    
+    private func showFeedback() {
+        guard let data = content, let status = data.status else { return }
+        guard let statusType = evaluationState(rawValue: status) else { return }
+        switch statusType {
+          case .none:
+              return
+          case .success:
+              doImageView.isHidden = false
+              undoImageView.isHidden = true
+          case .fail:
+              doImageView.isHidden = true
+              undoImageView.isHidden = false
         }
     }
     
     //TODO: text nil check
     private func setDataToTextView() {
-        
         //date
         guard let newContent = content, let date = newContent.targetDate else { return }
         dateLabel.text = chageDateToString(date)
         
         //textView
+        //TODO: text "" 일 경우 처리
+
+        highlightTextView.textColor = UIColor.black
+        memoTextView.textColor = UIColor.black
+        
         highlightTextView.text = newContent.highlight
         memoTextView.text = newContent.memo
     }
-    
-    
-    private func showFeedBack(isSuccess: Bool) {
-        if isSuccess {
-            
-        }
-    }
+
     
     func chageDateToString(_ date: Date) -> String {
         let formatter = DateFormatter()
@@ -165,12 +173,14 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
             doImageView.isHidden = false
             undoImageView.isHidden = true
             data.status = evaluationState.success.rawValue
+            content = data
             return
         }
         evaluationImageView.image = UIImage(named: "character-fail")!
         doImageView.isHidden = true
         undoImageView.isHidden = false
         data.status = evaluationState.fail.rawValue
+        content = data
     }
    
     func showModal(isFeedbackMemo: Bool) {
@@ -181,7 +191,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         writeVC.delegate = self
         
         guard let data = content else { return }
-        writeVC.content = content
+        writeVC.content = data
         writeVC.isFeedbackMemo = isFeedbackMemo
         present(writeVC, animated: true, completion: nil)
         
