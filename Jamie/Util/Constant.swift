@@ -24,6 +24,9 @@ class Constant: NSObject {
     //SettingViewController
     static let settingViewHeightForHeader: CGFloat = 46.0
     
+    static let settingViewVersionInfoTitle: String = "버전정보"
+    static let settingViewLogoutCellTitle: String = "로그아웃 하기"
+        
     //ListViewController
     static let listViewHeightForHeader: CGFloat = 97.0
 

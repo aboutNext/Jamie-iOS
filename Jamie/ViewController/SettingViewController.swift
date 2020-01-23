@@ -48,10 +48,10 @@ extension SettingViewController: UITableViewDataSource {
         
         let row = indexPath.row
         if row == 0 {
-            cell.titleLabel.text = "버전정보"
+            cell.titleLabel.text = Constant.settingViewVersionInfoTitle
             cell.detailLabel.text = "v 1.0.0"
         } else {
-            cell.titleLabel.text = "로그아웃 하기"
+            cell.titleLabel.text = Constant.settingViewLogoutCellTitle
             cell.detailLabel.isHidden = true
         }
         return cell
