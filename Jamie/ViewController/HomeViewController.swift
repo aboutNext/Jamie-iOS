@@ -17,11 +17,13 @@ enum MainTab: Int {
 class HomeViewController: UIViewController, writeViewControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var leftDateButton: UIButton!
+    @IBOutlet weak var rightDateButton: UIButton!
     
     //textView
     @IBOutlet weak var highlightTextView: UITextView!
-    @IBOutlet weak var dateLabel: UILabel!
-    
+
     //evaluableView
     @IBOutlet weak var evaluableView: UIView!
     @IBOutlet weak var mainCharacterView: UIImageView!
@@ -44,7 +46,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO: 오늘 날짜 확인해서 없으면 새로 생성하도록 변경
-        content = Content.init(targetDate: Date(), highlight: nil, memo: nil, status: nil)
+        content = Content.init(targetDate: Date(), highlight: "nil 123123", memo: nil, status: nil)
         setupUI()
 
     }
@@ -55,6 +57,9 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     
     private func setupUI() {
         //buttons
+        leftDateButton.addTarget(self, action: #selector(changeDate), for: .touchUpInside)
+        rightDateButton.addTarget(self, action: #selector(changeDate), for: .touchUpInside)
+        
         doButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         
@@ -74,6 +79,8 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         //memoTextView
         memoTextView.text = Constant.memoTextViewPlaceHolder
         memoTextView.textColor = Colors.playholderGray
+        
+        setDataToViews()
     }
     
     @objc func tappedTextView(tapGesture:
@@ -118,7 +125,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         let dateString = chageDateToString(date)
         dateLabel.text = dateString
 
-        setDataToTextView()
+        setDataToViews()
         showEvaluableViews(isEvaluabled: true)
         showFeedback()
         
@@ -140,19 +147,29 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     }
     
     //TODO: text nil check
-    private func setDataToTextView() {
+    private func setDataToViews() {
         //date
         guard let newContent = content, let date = newContent.targetDate else { return }
         dateLabel.text = chageDateToString(date)
         
         //textView
         //TODO: text "" 일 경우 처리
+        let isHighlightEmpty = newContent.highlight == Constant.highlightTextViewPlaceHolder
+        let isMemoEmpty = newContent.memo == Constant.memoTextViewPlaceHolder
 
-        highlightTextView.textColor = UIColor.black
-        memoTextView.textColor = UIColor.black
+        if !isHighlightEmpty || newContent.memo != nil {
+            highlightTextView.textColor = UIColor.black
+            highlightTextView.text = newContent.highlight
+        }
         
-        highlightTextView.text = newContent.highlight
-        memoTextView.text = newContent.memo
+        if !isMemoEmpty || newContent.memo != nil {
+            memoTextView.textColor = UIColor.black
+            memoTextView.text = newContent.memo
+        }
+        
+        if newContent.memo == nil {
+            
+        }
     }
 
     
@@ -160,9 +177,17 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         let formatter = DateFormatter()
         //TODO : 한국에만 아래 해당 (eng: EE - Tue 로)
         formatter.locale = Locale(identifier:"ko_KR")
-        formatter.dateFormat = "MM DD EEEE"
+        formatter.dateFormat = "M월 DD일 EEEE"
         let dateString =  formatter.string(from: date)
         return dateString
+    }
+    
+    @objc func changeDate(_ sender: UIButton) {
+        if sender === leftDateButton {
+            
+            return
+        }
+        
     }
     
     @objc func evaluableButtonTouched(_ sender: UIButton) {

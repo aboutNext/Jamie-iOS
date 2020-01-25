@@ -64,18 +64,11 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12월 20일 수요일" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58M-3H-qUB">
-                                        <rect key="frame" x="133.5" y="25" width="108.5" height="28"/>
+                                        <rect key="frame" x="133" y="25" width="109" height="28"/>
                                         <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previous-date-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-g0-Hkv">
-                                        <rect key="frame" x="97.5" y="27" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="2kA-zh-ag9"/>
-                                            <constraint firstAttribute="width" constant="24" id="Wtp-EH-usl"/>
-                                        </constraints>
-                                    </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next-date-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="gi5-Lw-2QD">
                                         <rect key="frame" x="254" y="27" width="24" height="24"/>
                                         <constraints>
@@ -83,18 +76,39 @@
                                             <constraint firstAttribute="width" constant="24" id="fOT-XO-3Xa"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeO-H2-5Vi">
-                                        <rect key="frame" x="82" y="11" width="30" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previous-date-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-g0-Hkv">
+                                        <rect key="frame" x="97" y="27" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="2kA-zh-ag9"/>
+                                            <constraint firstAttribute="width" constant="24" id="Wtp-EH-usl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeO-H2-5Vi">
+                                        <rect key="frame" x="77" y="12" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="EGw-Lt-jWo"/>
+                                            <constraint firstAttribute="width" constant="44" id="ZBd-V9-GGf"/>
+                                        </constraints>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlA-hv-l1s">
+                                        <rect key="frame" x="254" y="12" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="MVp-mU-wDa"/>
+                                            <constraint firstAttribute="width" constant="44" id="jQ1-oU-VBs"/>
+                                        </constraints>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ZlA-hv-l1s" secondAttribute="bottom" id="Gxr-6T-BO7"/>
                                     <constraint firstItem="4JH-g0-Hkv" firstAttribute="centerY" secondItem="58M-3H-qUB" secondAttribute="centerY" id="JFM-VZ-OD4"/>
-                                    <constraint firstItem="gi5-Lw-2QD" firstAttribute="leading" secondItem="58M-3H-qUB" secondAttribute="trailing" constant="12" id="QwX-FQ-ldC"/>
+                                    <constraint firstItem="58M-3H-qUB" firstAttribute="leading" secondItem="zeO-H2-5Vi" secondAttribute="trailing" constant="12" id="OTJ-sv-a9h"/>
+                                    <constraint firstItem="gi5-Lw-2QD" firstAttribute="leading" secondItem="58M-3H-qUB" secondAttribute="trailing" constant="12" id="QvY-Fs-mlu"/>
                                     <constraint firstItem="58M-3H-qUB" firstAttribute="centerX" secondItem="n8n-hL-nAn" secondAttribute="centerX" id="Ugf-QM-r30"/>
-                                    <constraint firstItem="58M-3H-qUB" firstAttribute="leading" secondItem="4JH-g0-Hkv" secondAttribute="trailing" constant="12" id="hFS-BY-Jka"/>
+                                    <constraint firstItem="ZlA-hv-l1s" firstAttribute="leading" secondItem="58M-3H-qUB" secondAttribute="trailing" constant="12" id="XOF-Rc-AeG"/>
                                     <constraint firstItem="58M-3H-qUB" firstAttribute="top" secondItem="n8n-hL-nAn" secondAttribute="top" constant="25" id="oTc-gf-E3U"/>
+                                    <constraint firstItem="58M-3H-qUB" firstAttribute="leading" secondItem="4JH-g0-Hkv" secondAttribute="trailing" constant="12" id="qPy-D9-Ywy"/>
                                     <constraint firstItem="gi5-Lw-2QD" firstAttribute="centerY" secondItem="58M-3H-qUB" secondAttribute="centerY" id="tbA-ec-0y9"/>
+                                    <constraint firstAttribute="bottom" secondItem="zeO-H2-5Vi" secondAttribute="bottom" id="vQZ-nQ-81N"/>
                                     <constraint firstAttribute="height" constant="56" id="zKt-Jk-v8t"/>
                                 </constraints>
                             </view>
@@ -162,10 +176,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luv-kQ-c2p">
                                                         <rect key="frame" x="14" y="12.5" width="122" height="75"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="122" id="FN9-46-dha"/>
                                                             <constraint firstAttribute="height" constant="75" id="ND5-0Z-8nk"/>
                                                         </constraints>
-                                                        <state key="normal" title="do" image="button-background-image"/>
+                                                        <state key="normal" image="button-background-image"/>
                                                     </button>
                                                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highlight-mark-complete" translatesAutoresizingMaskIntoConstraints="NO" id="w4M-eC-xHM">
                                                         <rect key="frame" x="45" y="20" width="60" height="60"/>
@@ -326,9 +339,11 @@
                         <outlet property="evaluableView" destination="T8L-Br-Bsd" id="RMm-xU-wku"/>
                         <outlet property="evaluationImageView" destination="sRT-H9-oxW" id="h49-ur-8xO"/>
                         <outlet property="highlightTextView" destination="631-m8-IKN" id="cq7-bP-7Ip"/>
+                        <outlet property="leftDateButton" destination="zeO-H2-5Vi" id="kvj-Sg-MxX"/>
                         <outlet property="mainCharacterView" destination="1wn-NN-dIW" id="Y1O-4P-1gQ"/>
                         <outlet property="memoTextView" destination="cxB-E8-Tqg" id="9eb-93-ilB"/>
                         <outlet property="memoView" destination="zNh-m0-wzh" id="JjH-xE-QTu"/>
+                        <outlet property="rightDateButton" destination="ZlA-hv-l1s" id="Z21-3f-qPD"/>
                         <outlet property="scrollView" destination="xFv-9h-RPG" id="gMs-b2-MHh"/>
                         <outlet property="undoButton" destination="aol-sr-u4x" id="ixt-DR-8Xh"/>
                         <outlet property="undoImageView" destination="ssM-B1-Nxx" id="Tz6-i4-4nP"/>
@@ -476,7 +491,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="120" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FWC-cC-kbu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FWC-cC-kbu">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -484,8 +499,8 @@
                                     <outlet property="delegate" destination="SrW-2f-tqb" id="xEQ-l7-qWK"/>
                                 </connections>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oe-og-3eA">
-                                <rect key="frame" x="26" y="420.5" width="362" height="65.5"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oe-og-3eA">
+                                <rect key="frame" x="90.5" y="421" width="233" height="64.5"/>
                                 <string key="text">하이라이트 목록이 비어있네요
 오늘의 하이라이트를 남겨보세요!</string>
                                 <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="28"/>
@@ -521,7 +536,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="120" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-F4-gH1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="54" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-F4-gH1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>

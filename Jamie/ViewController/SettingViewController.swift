@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum SettingViewCellType: Int {
+    case appVersion = 0
+    case logout
+}
+
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -46,13 +51,17 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as! SettingTableViewCell
         
-        let row = indexPath.row
-        if row == 0 {
+        let cellType = SettingViewCellType(rawValue: indexPath.row)
+        
+        switch cellType {
+        case .appVersion:
             cell.titleLabel.text = Constant.settingViewVersionInfoTitle
             cell.detailLabel.text = "v 1.0.0"
-        } else {
+        case .logout:
             cell.titleLabel.text = Constant.settingViewLogoutCellTitle
             cell.detailLabel.isHidden = true
+        default:
+            break
         }
         return cell
     }
@@ -61,7 +70,18 @@ extension SettingViewController: UITableViewDataSource {
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        let cellType = SettingViewCellType(rawValue: indexPath.row)
+
+        switch cellType {
+        case .appVersion:
+            
+            break
+        case .logout:
+            
+            break
+        default:
+            return
+        }
     }
 }
 
