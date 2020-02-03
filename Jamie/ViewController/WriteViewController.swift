@@ -28,7 +28,7 @@ class WriteViewController: UIViewController {
     var firebaseAPIControllerHandle: FirebaseAPI?
     var delegate: writeViewControllerDelegate?
     var content: Content?
-    var highlight = [Highlight]()
+//    var highlight = [Highlight]()
     var uid: String?
     var isUpdatedMode: Bool = false
     var isFeedbackMemo: Bool = true
@@ -72,7 +72,6 @@ class WriteViewController: UIViewController {
     @objc func touchUpDoneButton(_ sender: UIButton) {
         
         guard var newContent = content else { return }
-//        let content = Content.init(targetDate: nil, highlight: textView.text, memo: nil, status: nil)
         if !isFeedbackMemo {
             newContent.highlight = textView.text
         } else {
@@ -80,24 +79,24 @@ class WriteViewController: UIViewController {
         }
         
         delegate?.showWrittenContent(data: newContent)
-//        if textView.text == "오늘 하이라이트 어땠어요?" {
-//            print("저장할 내용이 없습니다")
-//            return
-//        }
-//
-//        let firebaseHandle = FirebaseAPI()
-//        //TODO: 저장 시도하는 동안 버튼 비활성화
-//
-//        //isUpdatedMode
-//        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text) { result in
-//            if result {
+        if textView.text == "오늘 하이라이트 어땠어요?" {
+            print("저장할 내용이 없습니다")
+            return
+        }
+
+        let firebaseHandle = FirebaseAPI()
+        //TODO: 저장 시도하는 동안 버튼 비활성화
+
+        //isUpdatedMode
+        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text) { result in
+            if result {
                 self.dismissKeyboard()
                 self.dismiss(animated: true, completion: nil)
-//
-//            } else {
-//                //저장되었다고 토스트로 알리고 닫힘
-//            }
-//        }
+
+            } else {
+                //저장되었다고 토스트로 알리고 닫힘
+            }
+        }
     }
     
     

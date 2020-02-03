@@ -23,8 +23,8 @@ class ListViewController: UIViewController {
      
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
-//        indicator.isHidden = true
+        getListData()
+        //        indicator.isHidden = true
 
     }
     
@@ -42,15 +42,25 @@ class ListViewController: UIViewController {
     
     func getListData() {
         let manager = HighlightManager.sharedInstance
-        highlights = manager.contents
-        tableView.reloadData()
+        manager.getHighlights { result in
+            if result {
+                self.highlights = manager.contents
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
-
-
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newData = highlights[indexPath.row]
+
+        let content = Content.init(targetDate: newData.targetDate, highlight: newData.highlight, memo: newData.memo, status: newData.status)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+//        homeVC.modalPresentationStyle = .overCurrentContext
+        homeVC.content = content
+        present(homeVC, animated: true, completion: nil)
     }
 }
 
@@ -80,8 +90,8 @@ extension ListViewController: UITableViewDataSource {
         if data.updatedDate != nil {
             let formatter = DateFormatter()
             //TODO : 한국에만 아래 해당 (eng: EE - Tue 로)
-            formatter.locale = Locale(identifier:"ko_KR")
-            formatter.dateFormat = "MM DD EEEE"
+            formatter.locale = Locale(identifier:"ko")
+            formatter.dateFormat = "MMM d EEE"
             let dateString =  formatter.string(from: data.updatedDate!)
             cell.dateLabel.text = dateString
         }

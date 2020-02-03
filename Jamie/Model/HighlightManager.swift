@@ -45,12 +45,11 @@ class HighlightManager {
     }
     
     
-    func getContentsData(completion: @escaping(_ isLogin: Bool) -> Void){
+    func getHighlights(completion: @escaping(_ isFinished: Bool) -> Void){
         let firebaseHandle = FirebaseAPI()
         firebaseHandle.getContentsData { highlights in
             self.contents = highlights
-//            self.contents = highlights
-            print(self.contents)
+//            print(self.contents)
             completion(true)
         }
     }

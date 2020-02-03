@@ -246,17 +246,17 @@ extension FirebaseAPI {
                         data["targetDate"] = targetValue
                         
                         let highlight = try! FirestoreDecoder().decode(Highlight.self, from: data)
+                        total += 1
                         highlightArr.append(highlight)
+                        if total == documentIDs.count {
+                            completion(highlightArr)
+                        }
                         
                     } else {
                         print("Document does not exist")
                     }
                 }
-                //                total += 1
             }
-            //            if total == documentIDs.count {
-            completion(highlightArr)
-            //            }
         }
     }
     

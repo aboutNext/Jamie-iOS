@@ -82,7 +82,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         let manager = HighlightManager.sharedInstance
         manager.showLoginGuide { result in
             if result {
-                manager.getContentsData { result in
+                manager.getHighlights { result in
                     if result {
                         self.listViewController.highlights = manager.contents
                     }

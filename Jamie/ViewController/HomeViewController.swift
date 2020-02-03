@@ -48,7 +48,9 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         //TODO: 오늘 날짜 확인해서 없으면 새로 생성하도록 변경
         let manager = HighlightManager.sharedInstance
         highlights = manager.contents
-//        content = Content.init(targetDate: Date(), highlight: "nil 123123", memo: nil, status: nil)
+        if content == nil {
+            content = Content.init(targetDate: Date(), highlight: nil, memo: nil, status: nil)
+        }
         setupUI()
 
     }
@@ -65,10 +67,6 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         doButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         
-        //textView
-        highlightTextView.text = Constant.highlightTextViewPlaceHolder
-        highlightTextView.textColor = Colors.playholderGray
-        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
         highlightTextView.addGestureRecognizer(tapRecognizer)
         
@@ -77,11 +75,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         
         //evaluationView
         showEvaluableViews(isEvaluabled: false)
-        
-        //memoTextView
-        memoTextView.text = Constant.memoTextViewPlaceHolder
-        memoTextView.textColor = Colors.playholderGray
-        
+                
         setDataToViews()
     }
     
@@ -89,11 +83,11 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         UIGestureRecognizer) {
         showModal(isFeedbackMemo: false)
     }
-
+    
     @objc func tappedMemoView(tapGesture:
-           UIGestureRecognizer) {
-           showModal(isFeedbackMemo: true)
-       }
+        UIGestureRecognizer) {
+        showModal(isFeedbackMemo: true)
+    }
     
     func showEvaluableViews(isEvaluabled : Bool) {
         if isEvaluabled {
@@ -159,7 +153,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         let isHighlightEmpty = newContent.highlight == Constant.highlightTextViewPlaceHolder
         let isMemoEmpty = newContent.memo == Constant.memoTextViewPlaceHolder
 
-        if !isHighlightEmpty || newContent.memo != nil {
+        if !isHighlightEmpty || newContent.highlight != nil {
             highlightTextView.textColor = UIColor.black
             highlightTextView.text = newContent.highlight
         }
@@ -169,17 +163,23 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
             memoTextView.text = newContent.memo
         }
         
+        //TODO: 임시
+        if newContent.highlight == nil {
+            highlightTextView.text = Constant.highlightTextViewPlaceHolder
+            highlightTextView.textColor = Colors.playholderGray
+        }
+        
         if newContent.memo == nil {
-            
+            memoTextView.text = Constant.memoTextViewPlaceHolder
+            memoTextView.textColor = Colors.playholderGray
         }
     }
-
     
     func chageDateToString(_ date: Date) -> String {
         let formatter = DateFormatter()
         //TODO : 한국에만 아래 해당 (eng: EE - Tue 로)
         formatter.locale = Locale(identifier:"ko_KR")
-        formatter.dateFormat = "M월 D일 EEEE"
+        formatter.dateFormat = "M월 d일 EEEE"
         let dateString =  formatter.string(from: date)
         return dateString
     }
