@@ -491,14 +491,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FWC-cC-kbu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="SrW-2f-tqb" id="Pdw-q9-byH"/>
-                                    <outlet property="delegate" destination="SrW-2f-tqb" id="xEQ-l7-qWK"/>
-                                </connections>
-                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hlt-jW-l75">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oe-og-3eA">
                                 <rect key="frame" x="90.5" y="421" width="233" height="64.5"/>
                                 <string key="text">하이라이트 목록이 비어있네요
@@ -507,6 +502,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FWC-cC-kbu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SrW-2f-tqb" id="Pdw-q9-byH"/>
+                                    <outlet property="delegate" destination="SrW-2f-tqb" id="xEQ-l7-qWK"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.93333333333333335" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -514,13 +517,16 @@
                             <constraint firstItem="0Ba-33-Y8o" firstAttribute="trailing" secondItem="FWC-cC-kbu" secondAttribute="trailing" id="1Sr-fP-tXC"/>
                             <constraint firstItem="FWC-cC-kbu" firstAttribute="leading" secondItem="0Ba-33-Y8o" secondAttribute="leading" id="2tI-3B-EUP"/>
                             <constraint firstItem="7Oe-og-3eA" firstAttribute="centerY" secondItem="0Ba-33-Y8o" secondAttribute="centerY" id="5bC-AZ-eaz"/>
+                            <constraint firstItem="hlt-jW-l75" firstAttribute="centerX" secondItem="0Ba-33-Y8o" secondAttribute="centerX" id="SuX-xk-WN6"/>
                             <constraint firstItem="7Oe-og-3eA" firstAttribute="centerX" secondItem="0Ba-33-Y8o" secondAttribute="centerX" id="TtB-YO-itm"/>
+                            <constraint firstItem="hlt-jW-l75" firstAttribute="centerY" secondItem="0Ba-33-Y8o" secondAttribute="centerY" id="YrR-R4-EWb"/>
                             <constraint firstAttribute="bottom" secondItem="FWC-cC-kbu" secondAttribute="bottom" id="hkL-af-QmJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Ba-33-Y8o"/>
                     </view>
                     <connections>
                         <outlet property="emptyNoticeLabel" destination="7Oe-og-3eA" id="hUK-en-3jz"/>
+                        <outlet property="indicator" destination="hlt-jW-l75" id="sf3-8T-NlL"/>
                         <outlet property="tableView" destination="FWC-cC-kbu" id="3Mj-Py-bMH"/>
                     </connections>
                 </viewController>

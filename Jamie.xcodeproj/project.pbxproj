@@ -36,6 +36,7 @@
 		FB3D022F23A3EF32006A7CA0 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D022E23A3EF32006A7CA0 /* Member.swift */; };
 		FBA6E7AD23D4A43E00A8EFC4 /* ListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA6E7AC23D4A43E00A8EFC4 /* ListTableHeaderView.swift */; };
 		FBA6E7AF23D4A44E00A8EFC4 /* ListTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA6E7AE23D4A44E00A8EFC4 /* ListTableHeaderView.xib */; };
+		FBE7428E23E85480001233E7 /* HighlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7428D23E85480001233E7 /* HighlightManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		FB3D022E23A3EF32006A7CA0 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		FBA6E7AC23D4A43E00A8EFC4 /* ListTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableHeaderView.swift; sourceTree = "<group>"; };
 		FBA6E7AE23D4A44E00A8EFC4 /* ListTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableHeaderView.xib; sourceTree = "<group>"; };
+		FBE7428D23E85480001233E7 /* HighlightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				18DA5D0E23862401007DB93E /* Highlight.swift */,
 				FB3D022E23A3EF32006A7CA0 /* Member.swift */,
+				FBE7428D23E85480001233E7 /* HighlightManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				CE4BC65C238A687200151056 /* MainTabBarViewController.swift in Sources */,
 				1871DC3423862D2D00757B60 /* SettingTableViewCell.swift in Sources */,
 				18DA5D0F23862401007DB93E /* Highlight.swift in Sources */,
+				FBE7428E23E85480001233E7 /* HighlightManager.swift in Sources */,
 				1887587E23850BE400C8F7EC /* SceneDelegate.swift in Sources */,
 				18DA5D0D238623FA007DB93E /* ListViewController.swift in Sources */,
 				18263E4923911152004018A4 /* Constant.swift in Sources */,

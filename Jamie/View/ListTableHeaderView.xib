@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
                     <color key="backgroundColor" red="0.94509803920000002" green="0.93333333330000001" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020년 1월" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmm-hX-RK9">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmm-hX-RK9">
                     <rect key="frame" x="25" y="31.5" width="364" height="41.5"/>
                     <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="36"/>
                     <nil key="textColor"/>
@@ -40,7 +40,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="dataLabel" destination="Kmm-hX-RK9" id="TmM-fo-5cQ"/>
+                <outlet property="dateLabel" destination="Kmm-hX-RK9" id="bqR-A1-hbd"/>
             </connections>
             <point key="canvasLocation" x="132" y="121"/>
         </view>

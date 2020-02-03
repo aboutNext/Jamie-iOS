@@ -46,7 +46,9 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO: 오늘 날짜 확인해서 없으면 새로 생성하도록 변경
-        content = Content.init(targetDate: Date(), highlight: "nil 123123", memo: nil, status: nil)
+        let manager = HighlightManager.sharedInstance
+        highlights = manager.contents
+//        content = Content.init(targetDate: Date(), highlight: "nil 123123", memo: nil, status: nil)
         setupUI()
 
     }
@@ -177,7 +179,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         let formatter = DateFormatter()
         //TODO : 한국에만 아래 해당 (eng: EE - Tue 로)
         formatter.locale = Locale(identifier:"ko_KR")
-        formatter.dateFormat = "M월 DD일 EEEE"
+        formatter.dateFormat = "M월 D일 EEEE"
         let dateString =  formatter.string(from: date)
         return dateString
     }

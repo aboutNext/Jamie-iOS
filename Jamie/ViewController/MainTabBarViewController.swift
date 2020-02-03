@@ -39,8 +39,6 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn();
-        
-//        showHighlightOfToday()
     }
     
     deinit {
@@ -48,25 +46,12 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         firebaseHandle.removeCheckingLoginStatus()
     }
     
-    //test
+    //로그인 버튼
     //    func signInButton(_ sender: Any) {
     //        GIDSignIn.sharedInstance().signIn()
     //        GIDSignIn.sharedInstance()?.presentingViewController = self
     //    }
     
-
-
-    private func getContentsData() {
-        let firebaseHandle = FirebaseAPI()
-        firebaseHandle.getContentsData { highlights in
-            self.contents.append(highlights)
-            //            self.contents = highlights
-//            print(self.contents)
-            //TODO : 구조 다시 고려해야함
-            self.homeViewController.highlights.append(highlights)
-            self.listViewController.highlights.append(highlights)
-        }
-    }
     
     @IBAction func didPressTab(_ sender: UIButton) {
         
@@ -94,26 +79,17 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
     
     
     func showLoginGuide() {
-        firebaseAPIControllerHandle = FirebaseAPI()
-        guard let firebaseHandle = firebaseAPIControllerHandle else { return }
-        
-        firebaseHandle.checkLoginStatus { (result) in
+        let manager = HighlightManager.sharedInstance
+        manager.showLoginGuide { result in
             if result {
-                //membership 조회
+                manager.getContentsData { result in
+                    if result {
+                        self.listViewController.highlights = manager.contents
+                    }
+                }
                 
-//                data 조회
                 
-                self.getContentsData()
-
-//                                firebaseHandle.getContentsData { Highlights in
-//                                    self.contents = Highlights
-//                                }
-                return
             } else {
-                
-                //membership 없으면 생성
-//                firebaseHandle.joinMembership()
-                
                 //or 로그인 화면 연결
                 let vc = self.switchToLoginPage()
                 self.present(vc, animated: true, completion: nil)

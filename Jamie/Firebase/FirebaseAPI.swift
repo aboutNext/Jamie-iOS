@@ -220,44 +220,43 @@ extension FirebaseAPI {
     }
   
     //TODO : [Highlight]일 때, completion call check 방법
-    func getContentsData(completion: @escaping(_ highlightArr: Highlight) -> Void) {
+    func getContentsData(completion: @escaping(_ highlightArr: [Highlight]) -> Void) {
         var highlightArr = [Highlight]()
         var total = 0
         self.getDocumentIDs(collectionName: Constant.firebaseContentsCollectionName) { documentIDs in
             for documentID in documentIDs {
-                Firestore.firestore().collection(Constant.firebaseContentsCollectionName).document(documentID).getDocument { document, error in
-                
+                Firestore.firestore().collection(Constant.firebaseContentsCollectionName).document(documentID).getDocument(source: .cache) { document, error in
+                    
                     if error != nil {
                         print("getContentsData Error \(String(describing: error))")
                         return
                     }
-        
+                    
                     if let document = document, var data = document.data() {
                         let createdDate = data["createdDate"] as! Timestamp
                         let updatedDate = data["updatedDate"] as! Timestamp
                         let targetDate = data["targetDate"] as! Timestamp
-
+                        
                         let createdValue = createdDate.dateValue()
                         let updatedValue = updatedDate.dateValue()
                         let targetValue = targetDate.dateValue()
-
+                        
                         data["createdDate"] = createdValue
                         data["updatedDate"] = updatedValue
                         data["targetDate"] = targetValue
-
+                        
                         let highlight = try! FirestoreDecoder().decode(Highlight.self, from: data)
-                        completion(highlight)
-//                        print("Model: \(data)")
-
+                        highlightArr.append(highlight)
+                        
                     } else {
                         print("Document does not exist")
                     }
                 }
-//                total += 1
+                //                total += 1
             }
-//            if total == documentIDs.count {
-//                completion(highlightArr)
-//            }
+            //            if total == documentIDs.count {
+            completion(highlightArr)
+            //            }
         }
     }
     

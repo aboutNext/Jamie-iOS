@@ -84,7 +84,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         
         //TODO : List tab에서 refresh call 에 사용
         firebaseHandle.getContentsData { highlights in
-            self.contents.append(highlights)
+//            self.contents.append(highlights)
 //            self.contents = highlights
 //            print(self.contents)
         }

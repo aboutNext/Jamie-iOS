@@ -12,6 +12,7 @@ class ListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyNoticeLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     var highlights = [Highlight]()
 
     
@@ -23,15 +24,26 @@ class ListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+//        indicator.isHidden = true
+
     }
     
-     func setupUI() {
-         let nibName = UINib(nibName: "ListTableViewCell", bundle: nil)
-         tableView.register(nibName, forCellReuseIdentifier: "ListTableViewCell")
-         self.view.addSubview(tableView)
+    func setupUI() {
+        indicator.isHidden = false
+        indicator.startAnimating()
+        
+        let nibName = UINib(nibName: "ListTableViewCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "ListTableViewCell")
+        self.view.addSubview(tableView)
         
         let xib = UINib(nibName: "ListTableHeaderView", bundle: nil)
         tableView.register(xib, forHeaderFooterViewReuseIdentifier: "ListTableHeaderView")
+    }
+    
+    func getListData() {
+        let manager = HighlightManager.sharedInstance
+        highlights = manager.contents
+        tableView.reloadData()
     }
 }
 
@@ -50,8 +62,9 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ListTableHeaderView") as! ListTableHeaderView
-//        headerView.dateLabel.text = "Date test"
-//        headerView.contentView.backgroundColor = Colors.backgroundGray
+        //TODO:
+        headerView.dateLabel.text = "2020년 1월"
+
         return headerView
     }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 class ListTableHeaderView: UITableViewHeaderFooterView {
-    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
 
