@@ -23,7 +23,7 @@ class ListViewController: UIViewController {
      
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getListData()
+        checkLoginStatus()
         //        indicator.isHidden = true
 
     }
@@ -38,6 +38,18 @@ class ListViewController: UIViewController {
         
         let xib = UINib(nibName: "ListTableHeaderView", bundle: nil)
         tableView.register(xib, forHeaderFooterViewReuseIdentifier: "ListTableHeaderView")
+    }
+    
+    func checkLoginStatus() {
+        let manager = HighlightManager.sharedInstance
+        manager.showLoginGuide { isSuccess in
+            if isSuccess {
+                self.getListData()
+
+            } else {
+                
+            }
+        }
     }
     
     func getListData() {
@@ -59,8 +71,13 @@ extension ListViewController: UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
 //        homeVC.modalPresentationStyle = .overCurrentContext
-        homeVC.content = content
-        present(homeVC, animated: true, completion: nil)
+//        homeVC.showEvaluableViews(isEvaluabled: true)
+     
+        present(homeVC, animated: true) {
+            homeVC.content = content
+                 homeVC.showWrittenContent(data: content)
+        }
+//        present(homeVC, animated: true, completion: nil)
     }
 }
 

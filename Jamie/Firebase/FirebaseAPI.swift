@@ -194,7 +194,7 @@ extension FirebaseAPI {
     func getDocumentIDs(collectionName: String, completion: @escaping(_ idArr: [String]) -> Void) {
         var documentIdArr = [String]()
         guard let user = userInfo else {
-            print("no uid")
+            print("getDocumentIDs: no uid")
             completion(documentIdArr)
             return
         }

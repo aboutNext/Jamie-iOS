@@ -38,7 +38,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         super.viewWillAppear(animated)
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn();
+//        GIDSignIn.sharedInstance()?.restorePreviousSignIn();
     }
     
     deinit {
@@ -128,6 +128,8 @@ extension MainTabBarViewController {
         if let error = error {
             print(error.localizedDescription)
             print("로그인 정보 없음")
+            //임시
+            self.showLoginGuide()
             return
         }
         

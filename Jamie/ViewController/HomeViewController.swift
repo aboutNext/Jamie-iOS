@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var leftDateButton: UIButton!
     @IBOutlet weak var rightDateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     //textView
     @IBOutlet weak var highlightTextView: UITextView!
@@ -42,6 +43,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     
     var highlights = [Highlight]()
     var content: Content?
+    var isFromListVC: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +76,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         memoTextView.addGestureRecognizer(tap)
         
         //evaluationView
-        showEvaluableViews(isEvaluabled: false)
+        showEvaluableViews(isEvaluabled: isFromListVC)
                 
         setDataToViews()
     }
@@ -109,13 +111,10 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     
     //Delegate
     func showWrittenContent(data: Content) {
-        guard var newContent = content else {
-            return
-        }
-        
-        newContent = data
         content = data
-     
+        guard var newContent = content else {
+                 return
+             }
         //TODO : date 따로 정리
         guard let date = newContent.targetDate else { return }
         let dateString = chageDateToString(date)
@@ -211,6 +210,10 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     }
    
     func showModal(isFeedbackMemo: Bool) {
+        
+       //userid check - return
+        
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let writeVC = storyboard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
