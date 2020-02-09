@@ -28,10 +28,11 @@ var contents: [Highlight] = []
 private var listener : ListenerRegistration!
 
 private var authListener: AuthStateDidChangeListenerHandle?
+private let queue = DispatchQueue(label: "FirebaseAPI")
 
 class FirebaseAPI {
     
-    private func checkUserExistence(completion: (_ userId: String?) -> Void){
+    private func checkUserExistence(completion: (_ userId: String?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             //currentUser 없음, 로그인 필요
             completion(nil)
@@ -45,7 +46,7 @@ class FirebaseAPI {
 //register user, setDatabase
 extension FirebaseAPI {
     
-    func checkLoginStatus(completion: @escaping(_ isLogin: Bool) -> Void){
+    static func checkLoginStatus(completion: @escaping(_ isLogin: Bool) -> Void){
         authListener = Auth.auth().addStateDidChangeListener({ (auth, user) in
             guard let user = user else {
                 completion(false)
@@ -70,7 +71,7 @@ extension FirebaseAPI {
     
     //회원 조회
     //TODO: user 문서id는 불필요하여 수정 해야함
-    func checkMembership() {
+    static func checkMembership() {
         guard let userInfo = userInfo else { return }
         let uid = userInfo.uid
     db.collection(Constant.firebaseUserCollectionName).whereField("uid", isEqualTo: uid)
@@ -86,7 +87,7 @@ extension FirebaseAPI {
             
             if count == 0 {
                 print("no used data, join member")
-                self.joinMembership()
+                FirebaseAPI.joinMembership()
                 return
             }
             
@@ -106,7 +107,7 @@ extension FirebaseAPI {
     
     //회원가입
     //TODO : 덮어쓰지 않도록 처리
-    func joinMembership() {
+    static func joinMembership() {
         guard let userInfo = userInfo else { return }
         let member = Member.init(uid: userInfo.uid, email: userInfo.email ?? "", displayName: userInfo.displayName, providerID: userInfo.providerID, createdDate: Date())
 
@@ -225,33 +226,34 @@ extension FirebaseAPI {
         var total = 0
         self.getDocumentIDs(collectionName: Constant.firebaseContentsCollectionName) { documentIDs in
             for documentID in documentIDs {
-                Firestore.firestore().collection(Constant.firebaseContentsCollectionName).document(documentID).getDocument(source: .cache) { document, error in
+            Firestore.firestore().collection(Constant.firebaseContentsCollectionName).document(documentID).getDocument(source: .cache) { document, error in
+                
+                if error != nil {
+                    print("getContentsData Error \(String(describing: error))")
+                    return
+                }
+                
+                if let document = document, var data = document.data() {
+                    let createdDate = data["createdDate"] as! Timestamp
+                    let updatedDate = data["updatedDate"] as! Timestamp
+                    let targetDate = data["targetDate"] as! Timestamp
                     
-                    if error != nil {
-                        print("getContentsData Error \(String(describing: error))")
-                        return
+                    let createdValue = createdDate.dateValue()
+                    let updatedValue = updatedDate.dateValue()
+                    let targetValue = targetDate.dateValue()
+                    
+                    data["createdDate"] = createdValue
+                    data["updatedDate"] = updatedValue
+                    data["targetDate"] = targetValue
+                    
+                    let highlight = try! FirestoreDecoder().decode(Highlight.self, from: data)
+                    total += 1
+                    highlightArr.append(highlight)
+                        
+                    if total == documentIDs.count {
+                        completion(highlightArr)
                     }
                     
-                    if let document = document, var data = document.data() {
-                        let createdDate = data["createdDate"] as! Timestamp
-                        let updatedDate = data["updatedDate"] as! Timestamp
-                        let targetDate = data["targetDate"] as! Timestamp
-                        
-                        let createdValue = createdDate.dateValue()
-                        let updatedValue = updatedDate.dateValue()
-                        let targetValue = targetDate.dateValue()
-                        
-                        data["createdDate"] = createdValue
-                        data["updatedDate"] = updatedValue
-                        data["targetDate"] = targetValue
-                        
-                        let highlight = try! FirestoreDecoder().decode(Highlight.self, from: data)
-                        total += 1
-                        highlightArr.append(highlight)
-                        if total == documentIDs.count {
-                            completion(highlightArr)
-                        }
-                        
                     } else {
                         print("Document does not exist")
                     }

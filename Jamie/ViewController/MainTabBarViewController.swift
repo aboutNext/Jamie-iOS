@@ -38,7 +38,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         super.viewWillAppear(animated)
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
-//        GIDSignIn.sharedInstance()?.restorePreviousSignIn();
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn();
     }
     
     deinit {

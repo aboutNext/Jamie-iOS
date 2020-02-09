@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Constant: NSObject {
+class Constant {
 
     //homeViewController
     

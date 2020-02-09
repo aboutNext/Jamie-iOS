@@ -24,21 +24,18 @@ class HighlightManager {
     
     //firebase
     var docRef: DatabaseReference!
-    var firebaseAPIControllerHandle: FirebaseAPI?
     var contents = [Highlight]()
 
-    func showLoginGuide(completion: @escaping(_ isLogin: Bool) -> Void){
-        firebaseAPIControllerHandle = FirebaseAPI()
-        guard let firebaseHandle = firebaseAPIControllerHandle else { return }
+    func showLoginGuide(completion: @escaping(_ isLogin: Bool) -> Void) {
         
-        firebaseHandle.checkLoginStatus { (result) in
+        FirebaseAPI.checkLoginStatus { (result) in
             if result {
                 //membership 조회 결과
                 completion(true)
                 return
             } else {
                 //membership 없으면 생성
-                firebaseHandle.joinMembership()
+                FirebaseAPI.joinMembership()
                 completion(false)
             }
         }
