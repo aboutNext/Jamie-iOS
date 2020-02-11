@@ -46,13 +46,6 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         firebaseHandle.removeCheckingLoginStatus()
     }
     
-    //로그인 버튼
-    //    func signInButton(_ sender: Any) {
-    //        GIDSignIn.sharedInstance().signIn()
-    //        GIDSignIn.sharedInstance()?.presentingViewController = self
-    //    }
-    
-    
     @IBAction func didPressTab(_ sender: UIButton) {
         
         let previousIndex = selectedIndex
@@ -77,11 +70,11 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
         }
     }
     
-    
     func showLoginGuide() {
         let manager = HighlightManager.sharedInstance
         manager.showLoginGuide { result in
             if result {
+                manager.isLoggedIn = true
                 manager.getHighlights { result in
                     if result {
                         self.listViewController.highlights = manager.contents
@@ -90,9 +83,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
                 
                 
             } else {
-                //or 로그인 화면 연결
-                let vc = self.switchToLoginPage()
-                self.present(vc, animated: true, completion: nil)
+                manager.isLoggedIn = false
             }
         }
     }
@@ -159,11 +150,5 @@ extension MainTabBarViewController {
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         
         print(sign)
-    }
-    
-    private func switchToLoginPage() -> UIViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
-        return controller
     }
 }

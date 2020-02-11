@@ -83,12 +83,12 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     
     @objc func tappedTextView(tapGesture:
         UIGestureRecognizer) {
-        showModal(isFeedbackMemo: false)
+        showModal(isMemoEditing: false)
     }
     
     @objc func tappedMemoView(tapGesture:
         UIGestureRecognizer) {
-        showModal(isFeedbackMemo: true)
+        showModal(isMemoEditing: true)
     }
     
     func showEvaluableViews(isEvaluabled : Bool) {
@@ -112,9 +112,9 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     //Delegate
     func showWrittenContent(data: Content) {
         content = data
-        guard var newContent = content else {
-                 return
-             }
+        guard let newContent = content else {
+            return
+        }
         //TODO : date 따로 정리
         guard let date = newContent.targetDate else { return }
         let dateString = chageDateToString(date)
@@ -209,21 +209,40 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         content = data
     }
    
-    func showModal(isFeedbackMemo: Bool) {
-        
-       //userid check - return
-        
-        
+    func showModal(isMemoEditing: Bool) {
+        let manager = HighlightManager.sharedInstance
+        let isLoggedIn = manager.isLoggedIn
+        if isLoggedIn {
+            let writeVC = self.switchToWritePage(isMemoEditing)
+            self.present(writeVC, animated: true, completion: nil)
+
+        } else {
+            //로그인 화면 연결 후 글 작성 가능
+            let vc = self.switchToLoginPage()
+            self.present(vc, animated: true, completion: {
+                let writeVC = self.switchToWritePage(isMemoEditing)
+                self.present(writeVC, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    private func switchToLoginPage() -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+        return controller
+    }
+    
+    private func switchToWritePage(_ isMemoEditing: Bool) -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let writeVC = storyboard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
         writeVC.modalPresentationStyle = .overCurrentContext
         writeVC.delegate = self
-        
-        guard let data = content else { return }
-        writeVC.content = data
-        writeVC.isFeedbackMemo = isFeedbackMemo
-        present(writeVC, animated: true, completion: nil)
-        
+        writeVC.isMemoEditing = isMemoEditing
+
+        if let data = content {
+            writeVC.content = data
+        }
+        return writeVC
     }
 }

@@ -28,10 +28,9 @@ class WriteViewController: UIViewController {
     var firebaseAPIControllerHandle: FirebaseAPI?
     var delegate: writeViewControllerDelegate?
     var content: Content?
-//    var highlight = [Highlight]()
     var uid: String?
     var isUpdatedMode: Bool = false
-    var isFeedbackMemo: Bool = true
+    var isMemoEditing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +57,7 @@ class WriteViewController: UIViewController {
             return
         }
         
-        if isFeedbackMemo {
+        if isMemoEditing {
             textView.text = data.memo
         } else {
             textView.text = data.highlight
@@ -72,7 +71,7 @@ class WriteViewController: UIViewController {
     @objc func touchUpDoneButton(_ sender: UIButton) {
         
         guard var newContent = content else { return }
-        if !isFeedbackMemo {
+        if !isMemoEditing {
             newContent.highlight = textView.text
         } else {
             newContent.memo = textView.text

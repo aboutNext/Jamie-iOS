@@ -2,10 +2,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '10.0'
 use_frameworks!
-inhibit_all_warnings!
 
 target 'Jamie' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for About
@@ -17,6 +15,5 @@ target 'Jamie' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'CodableFirebase'
-
 
 end

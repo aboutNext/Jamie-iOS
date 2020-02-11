@@ -25,7 +25,8 @@ class HighlightManager {
     //firebase
     var docRef: DatabaseReference!
     var contents = [Highlight]()
-
+    var isLoggedIn: Bool = false
+    
     func showLoginGuide(completion: @escaping(_ isLogin: Bool) -> Void) {
         
         FirebaseAPI.checkLoginStatus { (result) in

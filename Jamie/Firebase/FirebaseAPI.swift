@@ -360,7 +360,12 @@ extension FirebaseAPI {
     }
     
     func userLogout() {
-        
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
     }
     
     //    https://firebase.google.com/docs/auth/ios/manage-users?hl=ko

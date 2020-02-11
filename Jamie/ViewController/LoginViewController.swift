@@ -22,33 +22,32 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        GIDSignIn.sharedInstance().delegate = self
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        GIDSignIn.sharedInstance().presentingViewController = self
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn();
-        
-        FirebaseAPI.checkLoginStatus { (result) in
-            if result {
-                //membership 조회
-
-                //data 조회
-//                firebaseHandle.getContentsData { Highlights in
-//                    self.contents = Highlights
-//                }
-                return
-            } else {
-
-                //membership 없으면 생성
-                FirebaseAPI.joinMembership()
-
-                //or 로그인 화면 연결
-//                let vc = self.switchToLoginPage()
-//                self.present(vc, animated: true, completion: nil)
-            }
-        }
+//        GIDSignIn.sharedInstance().presentingViewController = self
+//
+//        FirebaseAPI.checkLoginStatus { (result) in
+//            if result {
+//                //membership 조회
+//
+//                //data 조회
+////                firebaseHandle.getContentsData { Highlights in
+////                    self.contents = Highlights
+////                }
+//                return
+//            } else {
+//
+//                //membership 없으면 생성
+//                FirebaseAPI.joinMembership()
+//
+//                //or 로그인 화면 연결
+////                let vc = self.switchToLoginPage()
+////                self.present(vc, animated: true, completion: nil)
+//            }
+//        }
     }
     
     deinit {
@@ -66,8 +65,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     @IBAction func onClickGoogleButton(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
         GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn();
+
     }
-    
     
     @IBAction func touchUpShowResult(_ sender: Any) {
 
