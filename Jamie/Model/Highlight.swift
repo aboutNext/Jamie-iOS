@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Highlight: Codable {
+struct Highlight: Codable, Equatable {
     var uid: String?
     var createdDate: Date?
     var updatedDate: Date?
@@ -18,10 +18,8 @@ struct Highlight: Codable {
     var status: String?
 }
 
-
-struct Content {
-    var targetDate: Date?
-    var highlight: String?
-    var memo: String?
-    var status: String?
-}
+/*
+    var createdDate: 생성 날짜
+    var updatedDate: 최근 마지막 업데이트 날짜
+    var targetDate: 하이라이트 지정날짜(변경 불가)
+ */

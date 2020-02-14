@@ -14,8 +14,7 @@ import FirebaseDatabase
 import FirebaseFirestore
 
 protocol writeViewControllerDelegate {
-    func showWrittenContent(data: Content)
-
+    func showWrittenContent(data: Highlight)
 }
 
 class WriteViewController: UIViewController {
@@ -27,10 +26,9 @@ class WriteViewController: UIViewController {
     var docRef: DatabaseReference!
     var firebaseAPIControllerHandle: FirebaseAPI?
     var delegate: writeViewControllerDelegate?
-    var content: Content?
-    var uid: String?
+    var content: Highlight?
     var isUpdatedMode: Bool = false
-    var isMemoEditing: Bool = false
+    var isTitleEditing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +54,11 @@ class WriteViewController: UIViewController {
             textView.text = Constant.highlightTextViewPlaceHolder
             return
         }
-        
-        if isMemoEditing {
-            textView.text = data.memo
-        } else {
+
+        if isTitleEditing {
             textView.text = data.highlight
+        } else {
+            textView.text = data.memo
         }
     }
     
@@ -71,12 +69,12 @@ class WriteViewController: UIViewController {
     @objc func touchUpDoneButton(_ sender: UIButton) {
         
         guard var newContent = content else { return }
-        if !isMemoEditing {
+        if isTitleEditing {
             newContent.highlight = textView.text
         } else {
             newContent.memo = textView.text
         }
-        
+
         delegate?.showWrittenContent(data: newContent)
         if textView.text == "오늘 하이라이트 어땠어요?" {
             print("저장할 내용이 없습니다")
@@ -86,8 +84,13 @@ class WriteViewController: UIViewController {
         let firebaseHandle = FirebaseAPI()
         //TODO: 저장 시도하는 동안 버튼 비활성화
 
-        //isUpdatedMode
-        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text) { result in
+        //isUpdatedMode: 리스트에서 진입, 수정모드
+        if isUpdatedMode {
+            
+            return
+        }
+
+        firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text, isTitleEditing: isTitleEditing) { result in
             if result {
                 self.dismissKeyboard()
                 self.dismiss(animated: true, completion: nil)

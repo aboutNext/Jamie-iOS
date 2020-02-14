@@ -124,13 +124,13 @@ extension FirebaseAPI {
 //Create, Read, Update, Delete Highlight
 extension FirebaseAPI {
     
-    //Create
+    //Create Collection
     func makeNewCollection(collectionName: String, docName: String) -> Bool {
         db.collection(collectionName).document()
         return true
     }
     
-    func addNewHighlightAtDocument(collectionName: String, content: String, completion: @escaping(_ result: Bool) -> Void) {
+    func addNewHighlightAtDocument(collectionName: String, content: String, isTitleEditing: Bool, completion: @escaping(_ result: Bool) -> Void) {
         checkUserExistence { userId in
             guard let userId = userId else {
                 print("no userId")
@@ -139,7 +139,14 @@ extension FirebaseAPI {
             }
             
             let date = Date()
-            let hightlight = Highlight.init(uid: userId, createdDate: date, updatedDate: date, targetDate: date, highlight: content, memo: nil, status: "none")
+            
+            var hightlight: Highlight
+            if isTitleEditing {
+                 hightlight = Highlight.init(uid: userId, createdDate: date, updatedDate: date, targetDate: date, highlight: content, memo: nil, status: nil)
+            } else {
+                hightlight = Highlight.init(uid: userId, createdDate: date, updatedDate: date, targetDate: date, highlight: nil, memo: content, status: nil)
+            }
+           
             
             let data = try! FirestoreEncoder().encode(hightlight)
             
@@ -156,6 +163,37 @@ extension FirebaseAPI {
             }
         }
     }
+    
+    func updateFeedback(collectionName: String, content: Highlight, isFeedbackSuccessful: Bool, completion: @escaping(_ result: Bool) -> Void) {
+        checkUserExistence { userId in
+            guard let _ = userId else {
+                print("no userId")
+                completion(false)
+                return
+            }
+            
+            var newContent = content
+            if isFeedbackSuccessful {
+                newContent.status = evaluationState.success.rawValue
+            } else {
+                newContent.status = evaluationState.fail.rawValue
+            }
+//            ///TODO : **  content -> highlight 변경
+//            let highlight = Highlight.init(uid: content.uid, createdDate: content.createdDate, updatedDate: content.updatedDate, targetDate: content.targetDate, highlight: content.highlight, memo: content.memo, status: content.status)
+            
+            let data = try! FirestoreEncoder().encode(newContent)
+            db.collection(collectionName).document().updateData(data) { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                    completion(false)
+                } else {
+                    print("Document successfully written!")
+                    completion(true)
+                }
+            }
+        }
+    }
+    
     
     func addSnapshotListener(collectionName: String, data: Dictionary <String, AnyObject>) {
         checkUserExistence { userId in
@@ -178,7 +216,7 @@ extension FirebaseAPI {
         }
     }
 
-    //Delete
+    //update
     func updateDataAtDocument(collectionName: String) {
         checkUserExistence { userId in
             guard let userId = userId else {

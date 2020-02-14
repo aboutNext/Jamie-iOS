@@ -42,53 +42,70 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     @IBOutlet weak var bottomMenuView: UIView!
     
     var highlights = [Highlight]()
-    var content: Content?
-    var isFromListVC: Bool = false
-    
+    var content: Highlight?
+    var isUpdatedMode: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO: 오늘 날짜 확인해서 없으면 새로 생성하도록 변경
-        let manager = HighlightManager.sharedInstance
-        highlights = manager.contents
-        if content == nil {
-            content = Content.init(targetDate: Date(), highlight: nil, memo: nil, status: nil)
-        }
-        setupUI()
-
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    private func setupUI() {
+    private func setup() {
+        
         //buttons
         leftDateButton.addTarget(self, action: #selector(changeDate), for: .touchUpInside)
         rightDateButton.addTarget(self, action: #selector(changeDate), for: .touchUpInside)
-        
         doButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         undoButton.addTarget(self, action: #selector(evaluableButtonTouched), for: .touchUpInside)
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedTextView))
         highlightTextView.addGestureRecognizer(tapRecognizer)
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedMemoView))
         memoTextView.addGestureRecognizer(tap)
         
         //evaluationView
-        showEvaluableViews(isEvaluabled: isFromListVC)
-                
+        showEvaluableViews(isEvaluabled: isUpdatedMode)
         setDataToViews()
+    }
+    
+    func findTodayData() {
+        //TODO: 오늘 날짜 확인해서 없으면 새로 생성하도록 변경
+        let manager = HighlightManager.sharedInstance
+        highlights = manager.contents
+        
+        let isHighlightEmpty = highlights.count == 0
+        if isHighlightEmpty {
+            makeHighlightOfToday()
+            return
+        }
+        guard let lastTargetDate = highlights.first?.targetDate else { return }
+        let DoesTodayExist = Calendar.current.isDate(lastTargetDate, inSameDayAs:Date())
+        if DoesTodayExist {
+            content = highlights.first
+        } else {
+            makeHighlightOfToday()
+        }
+        
+        showEvaluableViews(isEvaluabled: isUpdatedMode)
+        setDataToViews()
+    }
+    
+    private func makeHighlightOfToday() {
+        content = Highlight.init(uid: nil, createdDate: Date(), updatedDate: Date(), targetDate: Date(), highlight: nil, memo: nil, status: nil)
     }
     
     @objc func tappedTextView(tapGesture:
         UIGestureRecognizer) {
-        showModal(isMemoEditing: false)
+        showModal(isTitleEditing: true)
     }
     
     @objc func tappedMemoView(tapGesture:
         UIGestureRecognizer) {
-        showModal(isMemoEditing: true)
+        showModal(isTitleEditing: false)
     }
     
     func showEvaluableViews(isEvaluabled : Bool) {
@@ -110,7 +127,7 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     }
     
     //Delegate
-    func showWrittenContent(data: Content) {
+    func showWrittenContent(data: Highlight) {
         content = data
         guard let newContent = content else {
             return
@@ -193,34 +210,44 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     
     @objc func evaluableButtonTouched(_ sender: UIButton) {
         guard var data = content else { return }
+        let firebaseHandle = FirebaseAPI()
+        var isFeedbackSuccessful: Bool
         
         if sender === doButton {
             evaluationImageView.image = UIImage(named: "character-done")!
             doImageView.isHidden = false
             undoImageView.isHidden = true
             data.status = evaluationState.success.rawValue
-            content = data
-            return
+            isFeedbackSuccessful = true
+        } else {
+            evaluationImageView.image = UIImage(named: "character-fail")!
+            doImageView.isHidden = true
+            undoImageView.isHidden = false
+            data.status = evaluationState.fail.rawValue
+            isFeedbackSuccessful = false
         }
-        evaluationImageView.image = UIImage(named: "character-fail")!
-        doImageView.isHidden = true
-        undoImageView.isHidden = false
-        data.status = evaluationState.fail.rawValue
         content = data
+
+        //firebase update
+//        firebaseHandle.updateFeedback(collectionName: Constant.firebaseContentsCollectionName, content: data, isFeedbackSuccessful: isFeedbackSuccessful) { result in
+//            print(result)
+//
+//        }
+//
     }
    
-    func showModal(isMemoEditing: Bool) {
+    func showModal(isTitleEditing: Bool) {
         let manager = HighlightManager.sharedInstance
         let isLoggedIn = manager.isLoggedIn
         if isLoggedIn {
-            let writeVC = self.switchToWritePage(isMemoEditing)
+            let writeVC = self.switchToWritePage(isTitleEditing)
             self.present(writeVC, animated: true, completion: nil)
 
         } else {
             //로그인 화면 연결 후 글 작성 가능
             let vc = self.switchToLoginPage()
             self.present(vc, animated: true, completion: {
-                let writeVC = self.switchToWritePage(isMemoEditing)
+                let writeVC = self.switchToWritePage(isTitleEditing)
                 self.present(writeVC, animated: true, completion: nil)
             })
         }
@@ -232,13 +259,13 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         return controller
     }
     
-    private func switchToWritePage(_ isMemoEditing: Bool) -> UIViewController {
+    private func switchToWritePage(_ isTitleEditing: Bool) -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let writeVC = storyboard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
         writeVC.modalPresentationStyle = .overCurrentContext
         writeVC.delegate = self
-        writeVC.isMemoEditing = isMemoEditing
+        writeVC.isTitleEditing = isTitleEditing
 
         if let data = content {
             writeVC.content = data

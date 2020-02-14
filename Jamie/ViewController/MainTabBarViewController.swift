@@ -77,6 +77,7 @@ class MainTabBarViewController: UIViewController, GIDSignInDelegate{
                 manager.isLoggedIn = true
                 manager.getHighlights { result in
                     if result {
+                        self.homeViewController.findTodayData()
                         self.listViewController.highlights = manager.contents
                     }
                 }
