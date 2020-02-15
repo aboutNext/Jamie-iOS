@@ -73,7 +73,7 @@ extension ListViewController: UITableViewDelegate {
      
         present(homeVC, animated: true) {
             homeVC.content = content
-            homeVC.isUpdatedMode = true
+            homeVC.showTopDateView(isUpdatedMode: true)
             homeVC.showWrittenContent(data: content)
         }
     }

@@ -20,6 +20,8 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var leftDateButton: UIButton!
     @IBOutlet weak var rightDateButton: UIButton!
+    @IBOutlet weak var topLeftDateButtonImageView: UIImageView!
+    @IBOutlet weak var topRightDateButtonImageView: UIImageView!
     @IBOutlet weak var cancelButton: UIButton!
     
     //textView
@@ -126,6 +128,22 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         undoImageView.isHidden = true
     }
     
+    func showTopDateView(isUpdatedMode : Bool) {
+        if isUpdatedMode {
+            leftDateButton.isHidden = true
+            rightDateButton.isHidden = true
+            topLeftDateButtonImageView.isHidden = true
+            topRightDateButtonImageView.isHidden = true
+            cancelButton.isHidden = false
+            return
+        }
+        leftDateButton.isHidden = false
+        rightDateButton.isHidden = false
+        topLeftDateButtonImageView.isHidden = false
+        topRightDateButtonImageView.isHidden = false
+        cancelButton.isHidden = true
+    }
+    
     //Delegate
     func showWrittenContent(data: Highlight) {
         content = data
@@ -229,11 +247,10 @@ class HomeViewController: UIViewController, writeViewControllerDelegate {
         content = data
 
         //firebase update
-//        firebaseHandle.updateFeedback(collectionName: Constant.firebaseContentsCollectionName, content: data, isFeedbackSuccessful: isFeedbackSuccessful) { result in
-//            print(result)
+        firebaseHandle.updateFeedback(collectionName: Constant.firebaseContentsCollectionName, content: data, isFeedbackSuccessful: isFeedbackSuccessful) { result in
+            print(result)
 //
-//        }
-//
+        }
     }
    
     func showModal(isTitleEditing: Bool) {

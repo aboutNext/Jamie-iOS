@@ -164,6 +164,7 @@ extension FirebaseAPI {
         }
     }
     
+    
     func updateFeedback(collectionName: String, content: Highlight, isFeedbackSuccessful: Bool, completion: @escaping(_ result: Bool) -> Void) {
         checkUserExistence { userId in
             guard let _ = userId else {
@@ -172,23 +173,32 @@ extension FirebaseAPI {
                 return
             }
             
-            var newContent = content
-            if isFeedbackSuccessful {
-                newContent.status = evaluationState.success.rawValue
-            } else {
-                newContent.status = evaluationState.fail.rawValue
-            }
-//            ///TODO : **  content -> highlight 변경
-//            let highlight = Highlight.init(uid: content.uid, createdDate: content.createdDate, updatedDate: content.updatedDate, targetDate: content.targetDate, highlight: content.highlight, memo: content.memo, status: content.status)
-            
-            let data = try! FirestoreEncoder().encode(newContent)
-            db.collection(collectionName).document().updateData(data) { error in
-                if let error = error {
-                    print("Error writing document: \(error)")
+            self.getDocumentID(collectionName: collectionName, content: content) { documentID in
+                
+                guard let DocID = documentID else {
+                    print("no documentID")
                     completion(false)
+                    return
+                }
+                
+                var newContent = content
+                if isFeedbackSuccessful {
+                    newContent.status = evaluationState.success.rawValue
                 } else {
-                    print("Document successfully written!")
-                    completion(true)
+                    newContent.status = evaluationState.fail.rawValue
+                }
+                //            ///TODO : **  content -> highlight 변경
+                //            let highlight = Highlight.init(uid: content.uid, createdDate: content.createdDate, updatedDate: content.updatedDate, targetDate: content.targetDate, highlight: content.highlight, memo: content.memo, status: content.status)
+                
+                let data = try! FirestoreEncoder().encode(newContent)
+                db.collection(collectionName).document(DocID).updateData(data) { error in
+                    if let error = error {
+                        print("Error writing document: \(error)")
+                        completion(false)
+                    } else {
+                        print("Document successfully written!")
+                        completion(true)
+                    }
                 }
             }
         }
@@ -237,7 +247,10 @@ extension FirebaseAPI {
             completion(documentIdArr)
             return
         }
-        db.collection(collectionName).whereField("uid", isEqualTo: user.uid)
+        //*TODO : 순서
+        db.collection(collectionName)
+            .order(by: "targetDate", descending: true)
+            .whereField("uid", isEqualTo: user.uid)
             .getDocuments() { (querySnapshot, error) in
                 if let err = error {
                     print("Error getting documents: \(err)")
@@ -255,6 +268,34 @@ extension FirebaseAPI {
 //                    print("document IDs : \(documentIdArr)")
                 }
                 completion(documentIdArr)
+        }
+    }
+    
+    func getDocumentID(collectionName: String, content: Highlight, completion: @escaping(_ documentId: String?) -> Void) {
+        guard let user = userInfo else {
+            print("getDocumentIDs: no uid")
+            completion(nil)
+            return
+        }
+        //** TODO: targetDate로 비교
+        guard let highlight = content.highlight else { return }
+        db.collection(collectionName)
+            .whereField("highlight", isEqualTo: highlight)
+            .whereField("uid", isEqualTo: user.uid)
+            .getDocuments() { (querySnapshot, error) in
+                if let err = error {
+                    print("Error getting documents: \(err)")
+                    return
+                }
+                
+                guard let snapshot = querySnapshot else { return }
+                if snapshot.documents.count == 0 {
+                    print("no documents")
+                    return
+                }
+                let document = snapshot.documents.first
+                print(document?.documentID)
+                completion(document?.documentID)
         }
     }
   

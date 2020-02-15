@@ -84,12 +84,6 @@ class WriteViewController: UIViewController {
         let firebaseHandle = FirebaseAPI()
         //TODO: 저장 시도하는 동안 버튼 비활성화
 
-        //isUpdatedMode: 리스트에서 진입, 수정모드
-        if isUpdatedMode {
-            
-            return
-        }
-
         firebaseHandle.addNewHighlightAtDocument(collectionName: Constant.firebaseContentsCollectionName, content: textView.text, isTitleEditing: isTitleEditing) { result in
             if result {
                 self.dismissKeyboard()

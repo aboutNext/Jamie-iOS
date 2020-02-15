@@ -104,7 +104,9 @@
                                             <constraint firstAttribute="width" constant="42" id="pV0-Sx-bpD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="NanumOenSonJabIDoYeBbeo" family="나눔손글씨 왼손잡이도 예뻐" pointSize="26"/>
-                                        <state key="normal" title="X"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -347,6 +349,8 @@
                         <outlet property="memoView" destination="zNh-m0-wzh" id="JjH-xE-QTu"/>
                         <outlet property="rightDateButton" destination="ZlA-hv-l1s" id="Z21-3f-qPD"/>
                         <outlet property="scrollView" destination="xFv-9h-RPG" id="gMs-b2-MHh"/>
+                        <outlet property="topLeftDateButtonImageView" destination="gi5-Lw-2QD" id="F2Y-vC-UpW"/>
+                        <outlet property="topRightDateButtonImageView" destination="4JH-g0-Hkv" id="ffL-yK-IhJ"/>
                         <outlet property="undoButton" destination="aol-sr-u4x" id="ixt-DR-8Xh"/>
                         <outlet property="undoImageView" destination="ssM-B1-Nxx" id="Tz6-i4-4nP"/>
                     </connections>

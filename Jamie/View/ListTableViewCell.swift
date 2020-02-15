@@ -40,10 +40,10 @@ class ListTableViewCell: UITableViewCell {
             dateImageView.isHidden = true
         case .success:
             dateImageView.isHidden = false
-            dateImageView.image = UIImage(named: "text-highlight-yellow")
+            dateImageView.image = UIImage(named: "text-highlight-green")
         case .fail:
             dateImageView.isHidden = false
-            dateImageView.image = UIImage(named: "text-highlight-green")
+            dateImageView.image = UIImage(named: "text-highlight-yellow")
         }
     }
     
